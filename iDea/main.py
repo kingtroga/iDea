@@ -41,7 +41,7 @@ class IdeaApp(App):
 
     def start_ideaLabel2_animation(self):
         ideaLabel2 = self.root.screens[1].ids['idealabel2']
-        ideaLabel2_anim = Animation(pos_hint = {'center_y':0.95, 'center_x': 0.5},font_size=dp(30))
+        ideaLabel2_anim = Animation(pos_hint = {'center_y':0.97, 'center_x': 0.5},font_size=dp(30))
         ideaLabel2_anim.bind(on_complete=self.change_to_screen3)
         ideaLabel2_anim.start(ideaLabel2)
 

@@ -1,67 +1,13 @@
-#: import WipeTransition kivy.uix.screenmanager.WipeTransition
 <RootWidget>:
-    id: sm
-    transition: WipeTransition()
-    current: "Screen1"
-    duration: 500
     Screen1:
-    Screen2:
-    Screen3:
-
-<IdeaLabel1@Label>:
-    size_hint: .4, .3
-    font_size: "100dp"
-    font_name: "fonts/Montserrat-Bold.ttf" 
-    color: (0, 0, 0, 1)  
 
 <IdeaLabel2@Label>:
     size_hint: .4, .3
     font_size: "100dp"
     font_name: "fonts/Montserrat-Bold.ttf" 
-    color: (1, 1, 1, 1)  
-
-
-    
-
+    color: (1, 1, 1, 1)
 
 <Screen1>:
-    on_touch_down: root.manager.current = "Screen2"
-    name: "Screen1"
-    canvas.before:
-        PushMatrix:
-        Color:
-            rgba: 1, 1, 1, 1
-        Rectangle:
-            size: self.size
-            pos: self.pos
-    canvas.after:
-        PopMatrix:
-    FloatLayout:
-        IdeaLabel1:
-            id: idealabel1
-            text: "iDea"
-            pos_hint: {'center_y':0.5, 'center_x': 0.5}
-
-<Screen2>:
-    on_enter: app.start_ideaLabel2_animation()
-    name: "Screen2"
-    canvas.before:
-        PushMatrix:
-        Color:
-            rgba: 0, 0, 0, 1
-        Rectangle:
-            size: self.size
-            pos: self.pos
-    canvas.after:
-        PopMatrix:
-    FloatLayout:
-        IdeaLabel2:
-            id: idealabel2
-            text: "iDea"
-            pos_hint: {'center_y':0.5, 'center_x': 0.5}
-            
-<Screen3>:
-    name: "Screen3"
     canvas.before:
         PushMatrix:
         Color:
