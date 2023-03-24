@@ -1,0 +1,90 @@
+#: import WipeTransition kivy.uix.screenmanager.WipeTransition
+ScreenManager:
+    transition: WipeTransition()
+    current: "Screen1"
+    duration: 500
+    Screen1:
+    Screen2:
+    Screen3:
+
+<IdeaLabel1@Label>:
+    size_hint: .4, .3
+    font_size: "100dp"
+    font_name: "fonts/Montserrat-Bold.ttf" 
+    color: (0, 0, 0, 1)  
+
+<IdeaLabel2@Label>:
+    size_hint: .4, .3
+    font_size: "100dp"
+    font_name: "fonts/Montserrat-Bold.ttf" 
+    color: (1, 1, 1, 1)  
+
+
+    
+
+
+<Screen1>:
+    on_touch_down: root.manager.current = "Screen2"
+    name: "Screen1"
+    on_enter:  root.manager.current = "Screen2"
+    canvas.before:
+        PushMatrix:
+        Color:
+            rgba: 1, 1, 1, 1
+        Rectangle:
+            size: self.size
+            pos: self.pos
+    canvas.after:
+        PopMatrix:
+    FloatLayout:
+        IdeaLabel1:
+            id: i
+            text: "i"
+            pos_hint: {'center_y':0.5, 'right': 0.55}
+        IdeaLabel1:
+            id: D
+            text: "D" 
+            pos_hint: {'center_y':0.5, 'center_x': 0.45}   
+        IdeaLabel1:
+            id: e
+            text: "e"
+            pos_hint: {'center_y':0.5, 'center_x': 0.55}
+        IdeaLabel1:
+            id: a
+            text: "a"
+            pos_hint: {'center_y':0.5, 'x': 0.45}
+
+<Screen2>:
+    on_enter: app.start_ideaLabel_animation()
+    name: "Screen2"
+    canvas.before:
+        PushMatrix:
+        Color:
+            rgba: 0, 0, 0, 1
+        Rectangle:
+            size: self.size
+            pos: self.pos
+    canvas.after:
+        PopMatrix:
+
+    FloatLayout:
+        id: anim_ideaLabel
+        size_hint_x: 1
+        size_hint_y: 1 
+        FloatLayout:
+            IdeaLabel2:
+                id: i
+                text: "i"
+                pos_hint: {'center_y':0.5, 'right': 0.55}
+            IdeaLabel2:
+                id: d
+                text: "D" 
+                pos_hint: {'center_y':0.5, 'center_x': 0.45}
+            IdeaLabel2:
+                id: e
+                text: "e"
+                pos_hint: {'center_y':0.5, 'center_x': 0.55}
+            IdeaLabel2:
+                id: a
+                text: "a"
+                pos_hint: {'center_y':0.5, 'x': 0.45}
