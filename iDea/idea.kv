@@ -1,5 +1,6 @@
 #: import WipeTransition kivy.uix.screenmanager.WipeTransition
 ScreenManager:
+    id: sm
     transition: WipeTransition()
     current: "Screen1"
     duration: 500
@@ -38,24 +39,12 @@ ScreenManager:
         PopMatrix:
     FloatLayout:
         IdeaLabel1:
-            id: i
-            text: "i"
-            pos_hint: {'center_y':0.5, 'right': 0.55}
-        IdeaLabel1:
-            id: D
-            text: "D" 
-            pos_hint: {'center_y':0.5, 'center_x': 0.45}   
-        IdeaLabel1:
-            id: e
-            text: "e"
-            pos_hint: {'center_y':0.5, 'center_x': 0.55}
-        IdeaLabel1:
-            id: a
-            text: "a"
-            pos_hint: {'center_y':0.5, 'x': 0.45}
+            id: idealabel1
+            text: "iDea"
+            pos_hint: {'center_y':0.5, 'center_x': 0.5}
 
 <Screen2>:
-    on_enter: app.start_ideaLabel_animation()
+    on_enter: app.start_ideaLabel2_animation()
     name: "Screen2"
     canvas.before:
         PushMatrix:
@@ -66,25 +55,27 @@ ScreenManager:
             pos: self.pos
     canvas.after:
         PopMatrix:
-
     FloatLayout:
-        id: anim_ideaLabel
-        size_hint_x: 1
-        size_hint_y: 1 
-        FloatLayout:
-            IdeaLabel2:
-                id: i
-                text: "i"
-                pos_hint: {'center_y':0.5, 'right': 0.55}
-            IdeaLabel2:
-                id: d
-                text: "D" 
-                pos_hint: {'center_y':0.5, 'center_x': 0.45}
-            IdeaLabel2:
-                id: e
-                text: "e"
-                pos_hint: {'center_y':0.5, 'center_x': 0.55}
-            IdeaLabel2:
-                id: a
-                text: "a"
-                pos_hint: {'center_y':0.5, 'x': 0.45}
+        IdeaLabel2:
+            id: idealabel2
+            text: "iDea"
+            pos_hint: {'center_y':0.5, 'center_x': 0.5}
+            
+<Screen3>:
+    name: "Screen3"
+    canvas.before:
+        PushMatrix:
+        Color:
+            rgba: 1, 1, 1, 1
+        Rectangle:
+            size: self.size
+            pos: self.pos
+    canvas.after:
+        PopMatrix:
+    FloatLayout:
+        IdeaLabel2:
+            color: (0, 0, 0, 1) 
+            id: idealabel2_complete
+            text: "iDea"
+            pos_hint: {'center_y':0.95, 'center_x': 0.5}
+            font_size: "30dp"
