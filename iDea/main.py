@@ -9,7 +9,17 @@ from kivy.metrics import dp
 #Window.clearcolor = (1, 1, 1, 1)
 
 class RootWidget(ScreenManager):
-    pass
+    def __init__(self, **kwargs):
+        super(RootWidget, self).__init__(**kwargs)
+        Clock.schedule_once(self.screen_switch_to_screen2, 1)
+
+    def screen_switch_to_screen2(self, dt):
+        self.current = 'Screen2'
+
+    def change_to_screen3(self):
+        self.current = 'Screen3'
+
+
 
 class Screen1(Screen):
     pass
@@ -22,7 +32,8 @@ class Screen3(Screen):
 
 class IdeaApp(App):
     def build(self):
-        pass
+        self.sm = RootWidget()
+        return self.sm
 
     def touch_down_handler(self, *args):
         if args[0].name == 'Screen1':
@@ -35,8 +46,7 @@ class IdeaApp(App):
         ideaLabel2_anim.start(ideaLabel2)
 
     def change_to_screen3(self, instance, value):
-       pass
-
+        self.sm.current = "Screen3"
 
 
 LabelBase.register(name='Montserrat',
