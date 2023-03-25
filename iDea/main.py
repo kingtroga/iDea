@@ -1,5 +1,5 @@
 from kivy.app import App
-from kivy.uix.screenmanager import Screen, ScreenManager
+from kivy.uix.screenmanager import Screen, ScreenManager, NoTransition
 from kivy.core.text import LabelBase
 from kivy.core.window import Window, WindowBase
 from kivy.clock import Clock
@@ -46,6 +46,7 @@ class IdeaApp(App):
         ideaLabel2_anim.start(ideaLabel2)
 
     def change_to_screen3(self, instance, value):
+        self.sm.transition = NoTransition()
         self.sm.current = "Screen3"
 
 
