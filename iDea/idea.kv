@@ -145,5 +145,29 @@
                 size: self.texture_size
                 pos_hint: {'left': 1}
                 color: (185/255, 193/255, 190/255, 1)
-
+        BoxLayout:
+            orientation: "vertical"
+            size_hint: .9, .07
+            pos_hint: {'center_x': 0.5, 'center_y': 0.2}
+            SmoothButton:
+                id: sign_up_button
+                text:"Sign Up"
+                font_name: 'Arial'
+                font_size: "15dp"
+                color: (0, 14/255, 8/255, 1)
+                on_press: self.back_color=(0.5, 0.5, 0.5, 1)
+                on_release: self.back_color=(1, 1, 1, 1)
+<SmoothButton@Button>:
+    background_color: (0, 0, 0, 0)          
+    background_normal: ''
+    background_down: ''
+    back_color: (1, 1, 1, 1)
+    border_radius: [15]
+    canvas.before:
+        Color:
+            rgba: self.back_color
+        RoundedRectangle:
+            size: self.size
+            pos: self.pos
+            radius: self.border_radius
             
