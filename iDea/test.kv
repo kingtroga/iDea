@@ -19,7 +19,6 @@
         PopMatrix:
     FloatLayout:
         IdeaLabel2:
-            color: (1, 1, 1, 1) 
             id: idealabel2_complete
             text: "iDea"
             pos_hint: {'center_y':0.97, 'center_x': 0.5}
@@ -27,12 +26,12 @@
         BoxLayout:
             orientation: 'vertical'
             size_hint: .5, .4
-            pos_hint: {'center_x': 0.25, 'center_y': 0.725}
+            pos_hint: {'center_x': 0.27, 'center_y': 0.725}
             Label:
                 id: share
                 text: "Share"
                 font_name: "Arial"
-                font_size: "80dp"
+                font_size: "75dp"
                 size_hint_x: None
                 size: self.texture_size
                 pos_hint: {'left': 1}
@@ -40,7 +39,7 @@
                 id: information
                 text: "Information"
                 font_name: "Arial"
-                font_size: "80dp"
+                font_size: "75dp"
                 size_hint_x: None
                 size: self.texture_size
                 pos_hint: {'left':1}
@@ -49,7 +48,7 @@
                 id: easily
                 text: "Easily"
                 font_name: "Arial"
-                font_size: "80dp"
+                font_size: "75dp"
                 size_hint_x: None
                 size: self.texture_size
                 pos_hint: {'left':1}
@@ -57,7 +56,44 @@
                 id: within_mtu
                 text: "Within MTU"
                 font_name: "Arial"
-                font_size: "80dp"
+                font_size: "75dp"
                 size_hint_x: None
                 size: self.texture_size
                 pos_hint: {'left':1}
+        BoxLayout:
+            orientation: "vertical"
+            size_hint: .5, .1
+            pos_hint: {'center_x': 0.27, 'center_y': 0.45}
+            Label:
+                id: second_text_first_line
+                text: "Our chat app is the perfect way to"
+                font_name: "fonts/Montserrat-Light.ttf"
+                font_size: "20dp"
+                size_hint_x: None
+                size: self.texture_size
+                pos_hint: {'left': 1}
+                color: (185/255, 193/255, 190/255, 1)
+            Label:
+                id: second_text_second_line
+                text: "stay informed about Lectures and"
+                font_name: "fonts/Montserrat-Light.ttf"
+                font_size: "20dp"
+                size_hint_x: None
+                size: self.texture_size
+                pos_hint: {'left': 1}
+                color: (185/255, 193/255, 190/255, 1)
+            Label:
+                id: second_text_third_line
+                text: "school activites"
+                font_name: "fonts/Montserrat-Light.ttf"
+                font_size: "20dp"
+                size_hint_x: None
+                size: self.texture_size
+                pos_hint: {'left': 1}
+                color: (185/255, 193/255, 190/255, 1)
+        BoxLayout:
+            orientation: "vertical"
+            size_hint: .5, .1
+            pos_hint: {'center_x': 0.27, 'center_y': 0.45}
+            #Button:
+                #text:
