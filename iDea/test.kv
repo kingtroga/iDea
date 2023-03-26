@@ -11,126 +11,20 @@
     canvas.before:
         PushMatrix:
         Color:
-            rgba: 0, 0, 0, 0
+            rgba: 1, 1, 1, 1
         Rectangle:
             size: self.size
             pos: self.pos
     canvas.after:
         PopMatrix:
     FloatLayout:
-        IdeaLabel2:
-            id: idealabel2_complete
-            text: "iDea"
-            pos_hint: {'center_y':0.97, 'center_x': 0.5}
-            font_size: "30dp"
-        BoxLayout:
-            orientation: 'vertical'
-            size_hint: .5, .4
-            pos_hint: {'center_x': 0.27, 'center_y': 0.725}
-            Label:
-                id: share
-                text: "Share"
-                font_name: "Arial"
-                font_size: "75dp"
-                size_hint_x: None
-                size: self.texture_size
-                pos_hint: {'left': 1}
-            Label:
-                id: information
-                text: "Information"
-                font_name: "Arial"
-                font_size: "75dp"
-                size_hint_x: None
-                size: self.texture_size
-                pos_hint: {'left':1}
-
-            Label:
-                id: easily
-                text: "Easily"
-                font_name: "Arial"
-                font_size: "75dp"
-                size_hint_x: None
-                size: self.texture_size
-                pos_hint: {'left':1}
-            Label:
-                id: within_mtu
-                text: "Within MTU"
-                font_name: "Arial"
-                font_size: "75dp"
-                size_hint_x: None
-                size: self.texture_size
-                pos_hint: {'left':1}
-        BoxLayout:
-            orientation: "vertical"
-            size_hint: .5, .1
-            pos_hint: {'center_x': 0.27, 'center_y': 0.45}
-            Label:
-                id: second_text_first_line
-                text: "Our chat app is the perfect way to"
-                font_name: "fonts/Montserrat-Light.ttf"
-                font_size: "20dp"
-                size_hint_x: None
-                size: self.texture_size
-                pos_hint: {'left': 1}
-                color: (185/255, 193/255, 190/255, 1)
-            Label:
-                id: second_text_second_line
-                text: "stay informed about Lectures and"
-                font_name: "fonts/Montserrat-Light.ttf"
-                font_size: "20dp"
-                size_hint_x: None
-                size: self.texture_size
-                pos_hint: {'left': 1}
-                color: (185/255, 193/255, 190/255, 1)
-            Label:
-                id: second_text_third_line
-                text: "school activites"
-                font_name: "fonts/Montserrat-Light.ttf"
-                font_size: "20dp"
-                size_hint_x: None
-                size: self.texture_size
-                pos_hint: {'left': 1}
-                color: (185/255, 193/255, 190/255, 1)
-        BoxLayout:
-            orientation: "vertical"
-            size_hint: .9, .07
-            pos_hint: {'center_x': 0.5, 'center_y': 0.2}
-            SmoothButton:
-                id: sign_up_button
-                text:"Sign Up"
-                font_name: 'Arial'
-                font_size: "15dp"
-                color: (0, 14/255, 8/255, 1)
-                on_press: self.back_color=(0.5, 0.5, 0.5, 1)
-                on_release: self.back_color=(1, 1, 1, 1)
-        BoxLayout:
-            orientation: "horizontal"
-            size_hint: .5, .1
-            pos_hint: {'center_x': 0.55, 'center_y': 0.1}
-            padding: 0
-            spacing: 0
-            Label:
-                id: existing_account
-                text: "Existing account?"
-                font_name: "fonts/Montserrat-ExtraLight.ttf"
-                font_size: '15dp'
-                color: (185/255, 193/255, 190/255, 1)
-                size_hint_x: None
-                size: self.texture_size
-                pos_hint: {'right': 0.5}
-            Button:
-                id: log_in
-                text: " Log in"
-                font_size: '15dp'
-                background_normal: ''
-                background_down: ''
-                background_color: (0,0,0,0)
-                color: (1, 1, 1 ,1 )
-                size_hint_x: None
-                size: self.texture_size
-                pos_hint: {'x': 0.5}
-                on_press: self.color=(0.5, 0.5, 0.5, 1)
-                on_release: self.color=(1, 1, 1, 1)
+        Image:
+            source: "images/arrow2.png"
+            keep_ratio: True
+            size_hint: None, None
+            width: '25dp'
+            height: '33dp'
+            pos_hint: {'center_x': 0.1, 'top':0.98}
 
 
 

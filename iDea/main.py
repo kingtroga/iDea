@@ -1,3 +1,9 @@
+# for changing the default screen size staticily
+from kivy.config import Config
+Config.set('graphics', 'width', '400')
+Config.set('graphics', 'height', '812')
+Config.write()
+
 from kivy.app import App
 from kivy.uix.screenmanager import Screen, ScreenManager, NoTransition
 from kivy.core.text import LabelBase
@@ -6,6 +12,9 @@ from kivy.clock import Clock
 from kivytransitions.transitions import SimpleZoom
 from kivy.animation import Animation
 from kivy.metrics import dp
+
+#for changing the default screen size dynamicly
+#Window.size = (375, 812)
 #Window.clearcolor = (1, 1, 1, 1)
 
 class RootWidget(ScreenManager):
@@ -21,6 +30,7 @@ class RootWidget(ScreenManager):
 
 
 
+
 class Screen1(Screen):
     pass
 
@@ -28,6 +38,9 @@ class Screen2(Screen):
     pass 
 
 class Screen3(Screen):
+    pass
+
+class Screen4(Screen):
     pass
 
 class IdeaApp(App):
@@ -48,6 +61,8 @@ class IdeaApp(App):
     def change_to_screen3(self, instance, value):
         self.sm.transition = NoTransition()
         self.sm.current = "Screen3"
+
+
 
 
 LabelBase.register(name='Montserrat',
