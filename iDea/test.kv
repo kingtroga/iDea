@@ -103,6 +103,38 @@
                 color: (0, 14/255, 8/255, 1)
                 on_press: self.back_color=(0.5, 0.5, 0.5, 1)
                 on_release: self.back_color=(1, 1, 1, 1)
+        BoxLayout:
+            orientation: "horizontal"
+            size_hint: .5, .1
+            pos_hint: {'center_x': 0.55, 'center_y': 0.1}
+            padding: 0
+            spacing: 0
+            Label:
+                id: existing_account
+                text: "Existing account?"
+                font_name: "fonts/Montserrat-ExtraLight.ttf"
+                font_size: '15dp'
+                color: (185/255, 193/255, 190/255, 1)
+                size_hint_x: None
+                size: self.texture_size
+                pos_hint: {'right': 0.5}
+            Button:
+                id: log_in
+                text: " Log in"
+                font_size: '15dp'
+                background_normal: ''
+                background_down: ''
+                background_color: (0,0,0,0)
+                color: (1, 1, 1 ,1 )
+                size_hint_x: None
+                size: self.texture_size
+                pos_hint: {'x': 0.5}
+                on_press: self.color=(0.5, 0.5, 0.5, 1)
+                on_release: self.color=(1, 1, 1, 1)
+
+
+
+
 
 <SmoothButton@Button>:
     background_color: (0, 0, 0, 0)          
