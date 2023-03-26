@@ -5,7 +5,7 @@ Config.set('graphics', 'height', '812')
 Config.write()
 
 from kivy.app import App
-from kivy.uix.screenmanager import Screen, ScreenManager, NoTransition
+from kivy.uix.screenmanager import Screen, ScreenManager, NoTransition, WipeTransition
 from kivy.core.text import LabelBase
 from kivy.core.window import Window, WindowBase
 from kivy.clock import Clock
@@ -61,6 +61,26 @@ class IdeaApp(App):
     def change_to_screen3(self, instance, value):
         self.sm.transition = NoTransition()
         self.sm.current = "Screen3"
+        self.sm.transition = WipeTransition()
+
+    def handle_login(self, *args):
+        loginBtn = self.root.screens[2].ids['log_in']
+        print(loginBtn.color)
+        loginBtn.bind(on_press=self.change_to_screen4)
+        #Clock.schedule_once(self.change_to_screen4, 0.2)
+
+    def change_to_screen4(self, dt):
+        self.sm.transition = WipeTransition()
+        self.sm.current = "Screen4"
+
+    #def handle_press(self, widget):
+    #   widget.color=(0.5, 0.5, 0.5, 1)
+    #   self.sm.transition = WipeTransition()
+    #   self.sm.current = "Screen4"
+
+        
+
+
 
 
 

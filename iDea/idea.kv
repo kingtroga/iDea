@@ -184,8 +184,8 @@
                 size_hint_x: None
                 size: self.texture_size
                 pos_hint: {'x': 0.5}
-                on_touch_down: root.manager.current = "Screen4"
-                on_press: self.color=(0.5, 0.5, 0.5, 1)
+                on_touch_down: app.handle_login(*args)
+                on_press:  self.color=(0.5, 0.5, 0.5, 1) #app.handle_press(self)
                 on_release: self.color=(1, 1, 1, 1)
 <Screen4>:
     name: "Screen4"
@@ -199,13 +199,19 @@
     canvas.after:
         PopMatrix:
     FloatLayout:
-        Image:
-            source: "images/arrow2.png"
-            keep_ratio: True
+        Button:
+            background_down: ''
+            background_normal: ''
+            text: ''
             size_hint: None, None
             width: '25dp'
             height: '33dp'
             pos_hint: {'center_x': 0.1, 'top':0.98}
+            on_press: root.manager.current = "Screen3"
+            Image:
+                source: "images/arrow2.png"
+                size: self.parent.size
+                pos: self.parent.pos
 
 
 

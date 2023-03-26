@@ -18,13 +18,39 @@
     canvas.after:
         PopMatrix:
     FloatLayout:
-        Image:
-            source: "images/arrow2.png"
-            keep_ratio: True
+        Button:
+            background_down: ''
+            background_normal: ''
+            text: ''
             size_hint: None, None
             width: '25dp'
             height: '33dp'
-            pos_hint: {'center_x': 0.1, 'top':0.98}
+            pos_hint: {'right': 0.12, 'top':0.98}
+            #on_press: root.manager.current = "Screen3"
+            Image:
+                source: "images/arrow2.png"
+                size: self.parent.size
+                pos: self.parent.pos
+
+        BoxLayout:
+            orientation: "horizontal"
+            size_hint: .5, .1
+            pos_hint: {'center_x': 0.5, 'center_y': 0.88}
+            padding: 0
+            spacing: 0
+            Label:
+                color: (0, 14/255, 8/255, 1)
+                id: to_idea
+                text: ' [b]Log in to iDea[/b]'
+                font_name: 'Arialbd'
+                markup: True
+                font_size: "20dp"
+                pos_hint: {'x': 0.5}
+                canvas.before:
+                    Rectangle:
+                        color: (1, 1, 1, 1)
+                
+        
 
 
 
