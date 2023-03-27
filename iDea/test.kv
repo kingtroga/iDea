@@ -52,7 +52,29 @@
                         rgba: (88/255, 195/255, 182/255, 1)
                     Rectangle:
                         size: 66, 10
-                        pos: root.width/2 - 67, self.pos[1] + self.pos[1]/26 #to be completely fixed later
+                        pos: root.width/2 - 67, self.pos[1] + self.pos[1]/26
+        BoxLayout:
+            orientation: "vertical"
+            size_hint: .5, .07
+            pos_hint: {'center_x': 0.3, 'center_y': 0.81}
+            Label:
+                id: welcome_back
+                text: "Welcome back! Sign in using your"
+                font_name: "fonts/Montserrat-Light.ttf"
+                font_size: "18dp"
+                size_hint_x: None
+                size: self.texture_size
+                pos_hint: {'center_x': 0.9}
+                color: (121/255, 124/255, 123/255, 1)
+            Label:
+                id: matric_no
+                text: "matriculation number and password"
+                font_name: "fonts/Montserrat-Light.ttf"
+                font_size: "18dp"
+                size_hint_x: None
+                size: self.texture_size
+                pos_hint: {'center_x': 0.9}
+                color: (121/255, 124/255, 123/255, 1)
                         
         
 
