@@ -46,10 +46,14 @@
                 markup: True
                 font_size: "20dp"
                 pos_hint: {'x': 0.5}
+                design_width: root.width/3
                 canvas.before:
+                    Color: 
+                        rgba: (88/255, 195/255, 182/255, 1)
                     Rectangle:
-                        color: (1, 1, 1, 1)
-                
+                        size: 66, 10
+                        pos: root.width/2 - 67, self.pos[1] + self.pos[1]/26 #to be completely fixed later
+                        
         
 
 

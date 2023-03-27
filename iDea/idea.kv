@@ -81,12 +81,12 @@
         BoxLayout:
             orientation: 'vertical'
             size_hint: .5, .4
-            pos_hint: {'center_x': 0.27, 'center_y': 0.725}
+            pos_hint: {'center_x': 0.3, 'center_y': 0.725}
             Label:
                 id: share
                 text: "Share"
                 font_name: "Arial"
-                font_size: "75dp"
+                font_size: "66dp"
                 size_hint_x: None
                 size: self.texture_size
                 pos_hint: {'left': 1}
@@ -94,7 +94,7 @@
                 id: information
                 text: "Information"
                 font_name: "Arial"
-                font_size: "75dp"
+                font_size: "66dp"
                 size_hint_x: None
                 size: self.texture_size
                 pos_hint: {'left':1}
@@ -103,7 +103,7 @@
                 id: easily
                 text: "Easily"
                 font_name: "Arial"
-                font_size: "75dp"
+                font_size: "66dp"
                 size_hint_x: None
                 size: self.texture_size
                 pos_hint: {'left':1}
@@ -111,14 +111,14 @@
                 id: within_mtu
                 text: "Within MTU"
                 font_name: "Arial"
-                font_size: "75dp"
+                font_size: "66dp"
                 size_hint_x: None
                 size: self.texture_size
                 pos_hint: {'left':1}
         BoxLayout:
             orientation: "vertical"
             size_hint: .5, .1
-            pos_hint: {'center_x': 0.27, 'center_y': 0.45}
+            pos_hint: {'center_x': 0.3, 'center_y': 0.45}
             Label:
                 id: second_text_first_line
                 text: "Our chat app is the perfect way to"
@@ -212,6 +212,28 @@
                 source: "images/arrow2.png"
                 size: self.parent.size
                 pos: self.parent.pos
+        BoxLayout:
+            orientation: "horizontal"
+            size_hint: .5, .1
+            pos_hint: {'center_x': 0.5, 'center_y': 0.88}
+            padding: 0
+            spacing: 0
+            Label:
+                color: (0, 14/255, 8/255, 1)
+                id: to_idea
+                text: ' [b]Log in to iDea[/b]'
+                font_name: 'Arialbd'
+                markup: True
+                font_size: "20dp"
+                pos_hint: {'x': 0.5}
+                design_width: root.width/3
+                canvas.before:
+                    Color: 
+                        rgba: (88/255, 195/255, 182/255, 1)
+                    Rectangle:
+                        size: 66, 10
+                        pos: root.width/2 - 67, self.pos[1] + self.pos[1]/26 #to be completely fixed later
+                        
 
 
 
