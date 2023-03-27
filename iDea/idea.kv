@@ -284,7 +284,7 @@
                     Color:
                         rgba: (205/255, 209/255, 208/255, 1)
                     Rectangle:
-                        size: self.width, 2
+                        size: self.width, 1
                         pos: self.pos
                     Color:
                         rgba: (0, 14/255 , 8/255, 1)
@@ -319,7 +319,7 @@
                     Color:
                         rgba: (205/255, 209/255, 208/255, 1)
                     Rectangle:
-                        size: self.width, 2
+                        size: self.width, 1
                         pos: self.pos
                     Color:
                         rgba: (0, 0, 0, 1)
@@ -328,7 +328,7 @@
         BoxLayout:
             orientation: "vertical"
             size_hint: .9, .07
-            pos_hint: {'center_x': 0.5, 'center_y': 0.2}
+            pos_hint: {'center_x': 0.5, 'center_y': 0.13}
             SmoothButton:
                 id: log_in_button2
                 text:"Log in"
@@ -338,6 +338,18 @@
                 color: (121/255, 124/255, 123/255, 1)
                 on_press: app.handle_loginBtn2_press() #self.back_color=(36/255, 120/255, 109/255, 1)
                 on_release: app.handle_loginBtn2_release() #self.back_color= (243/255, 246/255, 246/255, 1)
+        BoxLayout:
+            orientation: "vertical"
+            pos_hint: {'center_x': 0.5, 'center_y': 0.07}
+            size_hint: .9, .02
+            Button:
+                background_normal: ''
+                background_down: ''
+                background_color: (1, 1, 1, 1)
+                color: (36/255, 120/255, 109/255, 1)
+                text: 'Forgot Password?'
+                on_press: self.color = (121/255, 124/255, 123/255, 1)
+                on_release: self.color = (36/255, 120/255, 109/255, 1)
  
             
 
