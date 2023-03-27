@@ -257,8 +257,8 @@
                 color: (121/255, 124/255, 123/255, 1)
         BoxLayout:
             orientation:'vertical'
-            size_hint: .5, .3
-            pos_hint: {'center_x': 0.3, 'center_y': 0.5}
+            size_hint: .5, .1
+            pos_hint: {'center_x': 0.3, 'center_y': 0.55}
             Label:
                 id: your_matric_no
                 font_name: "fonts/Montserrat-Medium.ttf"
@@ -274,9 +274,11 @@
                 background_color: (1, 1, 1, 1) 
                 cursor_color: (0, 0, 0, 1)
                 border: (10, 10, 10, 10) 
+                font_name: "Arial"
+                font_size: '19dp'
                 size_hint_x: 1.8
                 multiline: False
-                padding:[5, 38,5, 5]
+                padding:[0.4, 7,0.4, 0.4]
                 canvas.before:
                     PushMatrix:
                     Color:
@@ -285,10 +287,13 @@
                         size: self.width, 2
                         pos: self.pos
                     Color:
-                        rgba: (0, 0, 0, 1)
+                        rgba: (0, 14/255 , 8/255, 1)
                 canvas.after:
                     PopMatrix:
-
+        BoxLayout:
+            orientation:'vertical'
+            size_hint: .5, .1
+            pos_hint: {'center_x': 0.3, 'center_y': 0.42}
             Label:
                 id: password
                 font_name: "fonts/Montserrat-Medium.ttf"
@@ -302,11 +307,13 @@
                 background_normal: ''
                 background_active: ''
                 background_color: (1, 1, 1, 1) 
+                font_name: "Arial"
+                font_size: '19dp'
                 cursor_color: (0, 0, 0, 1)
                 border: (10, 10, 10, 10) 
                 size_hint_x: 1.8
                 multiline: False
-                padding:[5, 38,5, 5]
+                padding:[0.4, 7,0.4, 0.4]
                 canvas.before:
                     PushMatrix:
                     Color:
@@ -318,6 +325,7 @@
                         rgba: (0, 0, 0, 1)
                 canvas.after:
                     PopMatrix:
+ 
             
 
 
