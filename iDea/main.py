@@ -43,6 +43,9 @@ class Screen3(Screen):
 class Screen4(Screen):
     pass
 
+class Screen5(Screen):
+    pass
+
 class IdeaApp(App):
     def build(self):
         self.sm = RootWidget()
@@ -69,9 +72,19 @@ class IdeaApp(App):
         loginBtn.bind(on_press=self.change_to_screen4)
         #Clock.schedule_once(self.change_to_screen4, 0.2)
 
+    def handle_signUp(self, *args):
+        signUpBtn = self.root.screens[2].ids['sign_up_button']
+        print(signUpBtn.color)
+        signUpBtn.bind(on_press=self.change_to_screen5)
+
     def change_to_screen4(self, dt):
         self.sm.transition = WipeTransition()
         self.sm.current = "Screen4"
+
+    def change_to_screen5(self, button):
+        self.sm.transition = WipeTransition()
+        self.sm.current = "Screen5"
+
 
     def handle_loginBtn2_press(self):
         loginBtn = self.root.screens[3].ids['log_in_button2']
@@ -82,6 +95,20 @@ class IdeaApp(App):
         loginBtn = self.root.screens[3].ids['log_in_button2']
         loginBtn_anim = Animation(back_color= (243/255, 246/255, 246/255, 1), color=(121/255, 124/255, 123/255, 1), duration=0.03)
         loginBtn_anim.start(loginBtn)
+
+    def handle_signUpBtn_release(self):
+        self.back_color=(1, 1, 1, 1)
+        self.change_to_screen5()
+
+    def handle_signUpBtn2_press(self):
+        signUpBtn2 = self.root.screens[4].ids['signUpBtn2']
+        signUpBtn2_anim = Animation(back_color=(36/255, 120/255, 109/255, 1), color=(1, 1, 1, 1), duration=0.03)
+        signUpBtn2_anim.start(signUpBtn2)      
+    
+    def handle_signUpBtn2_release(self):
+        signUpBtn2 = self.root.screens[4].ids['signUpBtn2']
+        signUpBtn2_anim = Animation(back_color= (243/255, 246/255, 246/255, 1), color=(121/255, 124/255, 123/255, 1), duration=0.03)
+        signUpBtn2_anim.start(signUpBtn2)
 
     #def handle_press(self, widget):
     #   widget.color=(0.5, 0.5, 0.5, 1)

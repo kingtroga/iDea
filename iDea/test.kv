@@ -40,8 +40,8 @@
             spacing: 0
             Label:
                 color: (0, 14/255, 8/255, 1)
-                id: to_idea
-                text: ' [b]Log in to iDea[/b]'
+                id: sign_up_header
+                text: ' [b]Sign up[/b]'
                 font_name: 'Arialbd'
                 markup: True
                 font_size: "20dp"
@@ -51,15 +51,15 @@
                     Color: 
                         rgba: (88/255, 195/255, 182/255, 1)
                     Rectangle:
-                        size: 66, 10
-                        pos: root.width/2 - 67, self.pos[1] + self.pos[1]/26
+                        size: 58, 10
+                        pos: root.width/2 - 28, self.pos[1] + self.pos[1]/26 - 3
         BoxLayout:
             orientation: "vertical"
             size_hint: .5, .07
             pos_hint: {'center_x': 0.3, 'center_y': 0.81}
             Label:
-                id: welcome_back
-                text: "Welcome back! Sign in using your"
+                id: get_connected
+                text: "Get connected to every information"
                 font_name: "fonts/Montserrat-Light.ttf"
                 font_size: "18dp"
                 size_hint_x: None
@@ -68,7 +68,7 @@
                 color: (121/255, 124/255, 123/255, 1)
             Label:
                 id: matric_no
-                text: "matriculation number and password"
+                text: "in Mountain Top University"
                 font_name: "fonts/Montserrat-Light.ttf"
                 font_size: "18dp"
                 size_hint_x: None
@@ -78,12 +78,47 @@
         BoxLayout:
             orientation:'vertical'
             size_hint: .5, .1
+            pos_hint: {'center_x': 0.3, 'center_y': 0.68}
+            Label:
+                id: full_name
+                font_name: "fonts/Montserrat-Medium.ttf"
+                font_size: "16dp"
+                text: 'Full Name'
+                size_hint_x: None
+                size: self.texture_size
+                pos_hint: {'left': 1}
+                color: (36/255, 120/255, 109/255, 1)
+            TextInput:
+                background_normal: ''
+                background_active: ''
+                background_color: (1, 1, 1, 1) 
+                cursor_color: (0, 0, 0, 1)
+                border: (10, 10, 10, 10) 
+                font_name: "Arial"
+                font_size: '19dp'
+                size_hint_x: 1.8
+                multiline: False
+                padding:[0.4, 7,0.4, 0.4]
+                canvas.before:
+                    PushMatrix:
+                    Color:
+                        rgba: (205/255, 209/255, 208/255, 1)
+                    Rectangle:
+                        size: self.width, 1
+                        pos: self.pos
+                    Color:
+                        rgba: (0, 14/255 , 8/255, 1)
+                canvas.after:
+                    PopMatrix:
+        BoxLayout:
+            orientation:'vertical'
+            size_hint: .5, .1
             pos_hint: {'center_x': 0.3, 'center_y': 0.55}
             Label:
-                id: your_matric_no
+                id: matriculation_number
                 font_name: "fonts/Montserrat-Medium.ttf"
-                font_size: "18dp"
-                text: 'Your matric no'
+                font_size: "16dp"
+                text: 'Matriculation Number'
                 size_hint_x: None
                 size: self.texture_size
                 pos_hint: {'left': 1}
@@ -115,9 +150,9 @@
             size_hint: .5, .1
             pos_hint: {'center_x': 0.3, 'center_y': 0.42}
             Label:
-                id: password
+                id: password_signUp
                 font_name: "fonts/Montserrat-Medium.ttf"
-                font_size: "18dp"
+                font_size: "16dp"
                 text: 'Password'
                 size_hint_x: None
                 size: self.texture_size
@@ -146,38 +181,55 @@
                 canvas.after:
                     PopMatrix:
         BoxLayout:
+            orientation:'vertical'
+            size_hint: .5, .1
+            pos_hint: {'center_x': 0.3, 'center_y': 0.29}
+            Label:
+                id: confirm_password
+                font_name: "fonts/Montserrat-Medium.ttf"
+                font_size: "16dp"
+                text: 'Confirm Password'
+                size_hint_x: None
+                size: self.texture_size
+                pos_hint: {'left': 1}
+                color: (36/255, 120/255, 109/255, 1)
+            TextInput:
+                background_normal: ''
+                background_active: ''
+                background_color: (1, 1, 1, 1) 
+                font_name: "Arial"
+                font_size: '19dp'
+                cursor_color: (0, 0, 0, 1)
+                border: (10, 10, 10, 10) 
+                size_hint_x: 1.8
+                multiline: False
+                padding:[0.4, 7,0.4, 0.4]
+                canvas.before:
+                    PushMatrix:
+                    Color:
+                        rgba: (205/255, 209/255, 208/255, 1)
+                    Rectangle:
+                        size: self.width, 1
+                        pos: self.pos
+                    Color:
+                        rgba: (0, 0, 0, 1)
+                canvas.after:
+                    PopMatrix:
+                
+        BoxLayout:
             orientation: "vertical"
             size_hint: .9, .07
-            pos_hint: {'center_x': 0.5, 'center_y': 0.13}
+            pos_hint: {'center_x': 0.5, 'center_y': 0.08}
             SmoothButton:
-                id: log_in_button2
-                text:"Log in"
+                id: signUpBtn2
+                text:"Create an account"
                 back_color: (243/255, 246/255, 246/255, 1)
                 font_name: 'Arialbd'
                 font_size: "15dp"
                 color: (121/255, 124/255, 123/255, 1)
-                on_press: app.handle_loginBtn2_press() #self.back_color=(36/255, 120/255, 109/255, 1)
-                on_release: app.handle_loginBtn2_release() #self.back_color= (243/255, 246/255, 246/255, 1)
-        BoxLayout:
-            orientation: "vertical"
-            pos_hint: {'center_x': 0.5, 'center_y': 0.07}
-            size_hint: .9, .02
-            Button:
-                background_normal: ''
-                background_down: ''
-                background_color: (1, 1, 1, 1)
-                color: (36/255, 120/255, 109/255, 1)
-                text: 'Forgot Password?'
-                on_press: self.color = (121/255, 124/255, 123/255, 1)
-                on_release: self.color = (36/255, 120/255, 109/255, 1)
-           
-
-            
-            
-
-
-
-
+                on_press: app.handle_signUpBtn2_press() #self.back_color=(36/255, 120/255, 109/255, 1)
+                on_release: app.handle_signUpBtn2_release() #self.back_color= (243/255, 246/255, 246/255, 1)
+        
 
 <SmoothButton@Button>:
     background_color: (0, 0, 0, 0)          
