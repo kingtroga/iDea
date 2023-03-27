@@ -255,10 +255,70 @@
                 size: self.texture_size
                 pos_hint: {'center_x': 0.9}
                 color: (121/255, 124/255, 123/255, 1)
-                        
-                        
+        BoxLayout:
+            orientation:'vertical'
+            size_hint: .5, .3
+            pos_hint: {'center_x': 0.3, 'center_y': 0.5}
+            Label:
+                id: your_matric_no
+                font_name: "fonts/Montserrat-Medium.ttf"
+                font_size: "18dp"
+                text: 'Your matric no'
+                size_hint_x: None
+                size: self.texture_size
+                pos_hint: {'left': 1}
+                color: (36/255, 120/255, 109/255, 1)
+            TextInput:
+                background_normal: ''
+                background_active: ''
+                background_color: (1, 1, 1, 1) 
+                cursor_color: (0, 0, 0, 1)
+                border: (10, 10, 10, 10) 
+                size_hint_x: 1.8
+                multiline: False
+                padding:[5, 38,5, 5]
+                canvas.before:
+                    PushMatrix:
+                    Color:
+                        rgba: (205/255, 209/255, 208/255, 1)
+                    Rectangle:
+                        size: self.width, 2
+                        pos: self.pos
+                    Color:
+                        rgba: (0, 0, 0, 1)
+                canvas.after:
+                    PopMatrix:
 
-
+            Label:
+                id: password
+                font_name: "fonts/Montserrat-Medium.ttf"
+                font_size: "18dp"
+                text: 'Password'
+                size_hint_x: None
+                size: self.texture_size
+                pos_hint: {'left': 1}
+                color: (36/255, 120/255, 109/255, 1)
+            TextInput:
+                background_normal: ''
+                background_active: ''
+                background_color: (1, 1, 1, 1) 
+                cursor_color: (0, 0, 0, 1)
+                border: (10, 10, 10, 10) 
+                size_hint_x: 1.8
+                multiline: False
+                padding:[5, 38,5, 5]
+                canvas.before:
+                    PushMatrix:
+                    Color:
+                        rgba: (205/255, 209/255, 208/255, 1)
+                    Rectangle:
+                        size: self.width, 2
+                        pos: self.pos
+                    Color:
+                        rgba: (0, 0, 0, 1)
+                canvas.after:
+                    PopMatrix:
+            
 
 
 <SmoothButton@Button>:
