@@ -73,6 +73,16 @@ class IdeaApp(App):
         self.sm.transition = WipeTransition()
         self.sm.current = "Screen4"
 
+    def handle_loginBtn2_press(self):
+        loginBtn = self.root.screens[3].ids['log_in_button2']
+        loginBtn_anim = Animation(back_color=(36/255, 120/255, 109/255, 1), color=(1, 1, 1, 1), duration=0.03)
+        loginBtn_anim.start(loginBtn)      
+    
+    def handle_loginBtn2_release(self):
+        loginBtn = self.root.screens[3].ids['log_in_button2']
+        loginBtn_anim = Animation(back_color= (243/255, 246/255, 246/255, 1), color=(121/255, 124/255, 123/255, 1), duration=0.03)
+        loginBtn_anim.start(loginBtn)
+
     #def handle_press(self, widget):
     #   widget.color=(0.5, 0.5, 0.5, 1)
     #   self.sm.transition = WipeTransition()

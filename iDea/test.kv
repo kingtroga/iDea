@@ -104,7 +104,7 @@
                     Color:
                         rgba: (205/255, 209/255, 208/255, 1)
                     Rectangle:
-                        size: self.width, 2
+                        size: self.width, 1
                         pos: self.pos
                     Color:
                         rgba: (0, 14/255 , 8/255, 1)
@@ -139,13 +139,25 @@
                     Color:
                         rgba: (205/255, 209/255, 208/255, 1)
                     Rectangle:
-                        size: self.width, 2
+                        size: self.width, 1
                         pos: self.pos
                     Color:
                         rgba: (0, 0, 0, 1)
                 canvas.after:
                     PopMatrix:
-        
+        BoxLayout:
+            orientation: "vertical"
+            size_hint: .9, .07
+            pos_hint: {'center_x': 0.5, 'center_y': 0.2}
+            SmoothButton:
+                id: log_in_button2
+                text:"Log in"
+                back_color: (243/255, 246/255, 246/255, 1)
+                font_name: 'Arialbd'
+                font_size: "15dp"
+                color: (121/255, 124/255, 123/255, 1)
+                on_press: app.handle_loginBtn2_press() #self.back_color=(36/255, 120/255, 109/255, 1)
+                on_release: app.handle_loginBtn2_release() #self.back_color= (243/255, 246/255, 246/255, 1)
            
 
             
