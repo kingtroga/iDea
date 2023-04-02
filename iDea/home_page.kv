@@ -1,0 +1,62 @@
+<ImageButton>:
+    size_hint: None, None
+    size: "60dp", "60dp"
+    on_release:
+        app.root.current = "story_page"
+        app.show_stories(self)
+    canvas:
+        Color:
+            rgba: 1, 1, 1, 1
+        RoundedRectangle:
+            source: self.image_source
+            size: self.size
+            pos: self.pos
+            radius: [50]
+
+    canvas.after:
+        Color:
+            rgba: 1, 0, 0, 1
+        Line:
+            width: 1.2
+            circle: (self.center_x, self.center_y, min(self.width+8, self.height+8)/2, 0, 360)
+
+Screen:
+    name: "home_page"
+    #on_touch_down: root.manager.current = 'story_page'
+    canvas.before:
+        PushMatrix:
+        Color:
+            rgba: 1, 1, 1, 1
+        Rectangle:
+            size: self.size
+            pos: self.pos
+    canvas.after:
+        PopMatrix:
+    FloatLayout:
+        canvas.before:
+            PushMatrix:
+            Color:
+                rgba: 1, 1, 1, 1
+            Rectangle:
+                size: self.size
+                pos: self.pos
+        canvas.after:
+            PopMatrix:
+        ScrollView:
+            do_scroll_y: False
+            do_scroll_x: True
+            size_hint_y: .15
+            pos_hint: {"top": 1}
+            bar_width: 0
+            GridLayout:
+                id: grid
+                size_hint_x: None
+                height: self.minimum_height
+                width: self.minimum_width
+                rows: 1
+                spacing: 25
+                padding: 20, 15
+
+
+            
+        

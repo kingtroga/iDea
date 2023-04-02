@@ -9,6 +9,7 @@
     Screen3:
     Screen4:
     Screen5:
+    Screen6:
 
 <IdeaLabel1@Label>:
     size_hint: .4, .3
@@ -338,6 +339,7 @@
                 font_name: 'Arialbd'
                 font_size: "15dp"
                 color: (121/255, 124/255, 123/255, 1)
+                on_touch_down: app.handle_login2()
                 on_press: app.handle_loginBtn2_press() #self.back_color=(36/255, 120/255, 109/255, 1)
                 on_release: app.handle_loginBtn2_release() #self.back_color= (243/255, 246/255, 246/255, 1)
         BoxLayout:
@@ -576,6 +578,15 @@
                 on_press: app.handle_signUpBtn2_press() #self.back_color=(36/255, 120/255, 109/255, 1)
                 on_release: app.handle_signUpBtn2_release() #self.back_color= (243/255, 246/255, 246/255, 1)
 
+<Screen6>:
+    name: "Screen6"
+    canvas.before:
+        PushMatrix:
+        Color:
+            rgba: 1, 1, 1, 1
+        Rectangle:
+            size: self.size
+            pos: self.pos
 
 
 <SmoothButton@Button>:

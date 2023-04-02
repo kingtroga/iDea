@@ -46,6 +46,9 @@ class Screen4(Screen):
 class Screen5(Screen):
     pass
 
+class Screen6(Screen):
+    pass
+
 class IdeaApp(App):
     def build(self):
         self.sm = RootWidget()
@@ -72,6 +75,10 @@ class IdeaApp(App):
         loginBtn.bind(on_press=self.change_to_screen4)
         #Clock.schedule_once(self.change_to_screen4, 0.2)
 
+    def handle_login2(self, *args):
+        loginBtn2 = self.root.screens[3].ids['log_in_button2']
+        loginBtn2.bind(on_press=self.change_to_screen6)
+
     def handle_signUp(self, *args):
         signUpBtn = self.root.screens[2].ids['sign_up_button']
         print(signUpBtn.color)
@@ -83,7 +90,12 @@ class IdeaApp(App):
 
     def change_to_screen5(self, button):
         self.sm.transition = WipeTransition()
+        #print("What the fuck?")
         self.sm.current = "Screen5"
+    
+    def change_to_screen6(self, button):
+        self.sm.transition = WipeTransition()
+        self.sm.current = "Screen6"
 
 
     def handle_loginBtn2_press(self):
@@ -122,8 +134,8 @@ class IdeaApp(App):
 
 
 
-LabelBase.register(name='Montserrat',
-                   fn_regular=r'C:\Users\TARI\Desktop\code\kivy\iDea\fonts\Montserrat-VariableFont_wght.ttf')
+#LabelBase.register(name='Montserrat',
+#                   fn_regular=r'C:\Users\TARI\Desktop\code\kivy\iDea\fonts\Montserrat-VariableFont_wght.ttf')
 
 if __name__ == "__main__":
     IdeaApp().run()
