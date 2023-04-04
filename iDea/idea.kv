@@ -1,5 +1,7 @@
 #: import WipeTransition kivy.uix.screenmanager.WipeTransition
+#: import get_color_from_hex kivy.utils.get_color_from_hex
 <RootWidget>:
+    
     id: sm
     transition: WipeTransition()
     current: "Screen1"
@@ -10,6 +12,7 @@
     Screen4:
     Screen5:
     Screen6:
+    Screen7:
 
 <IdeaLabel1@Label>:
     size_hint: .4, .3
@@ -29,6 +32,7 @@
 
 <Screen1>:
     on_touch_down: root.manager.current = "Screen2"
+    
     name: "Screen1"
     canvas.before:
         PushMatrix:
@@ -68,7 +72,7 @@
     canvas.before:
         PushMatrix:
         Color:
-            rgba: 0, 0, 0, 0
+            rgba: 0, 0, 0, 1
         Rectangle:
             size: self.size
             pos: self.pos
@@ -580,13 +584,221 @@
 
 <Screen6>:
     name: "Screen6"
+    on_enter: app.start_story()
+    MDBottomNavigation:
+        id: bottom_navigation
+        selected_color_background: get_color_from_hex('FFFFFF')
+        text_color_active: get_color_from_hex('24786D')
+        MDBottomNavigationItem:
+            name: 'screen1'
+            text: 'Message'
+            icon: 'message-processing-outline'
+            MDScreen:
+                radius: [0, 0, 0, 0]
+                id: messages_screen
+                md_bg_color: 0, 14/255, 8/255, 1
+                
+                AnchorLayout:
+                    anchor_x: 'center'
+                    anchor_y: 'top'
+                    MDTopAppBar:
+                        title: "Home"
+                        id: top_bar_1
+                        md_bg_color: 0, 14/255, 8/255, 1
+                        left_action_items: [["magnify", "This is the search button"]]
+                        specific_text_color: 1, 1, 1, 1
+                        right_action_items: [["dots-vertical"]]
+                        elevation: 0
+
+                MDFloatLayout:
+                    MDIconButton:
+                        icon: '4.jpg'
+                        icon_size: '30dp'
+                        theme_icon_color: "Custom"
+                        pos_hint: {'right': 0.98, 'top': 0.99}
+                        
+                        canvas:
+                            Color: 
+                                rgb: 1, 1, 1, 1
+                            RoundedRectangle:
+                                source: '4.jpg'
+                                size: self.size
+                                pos: self.pos
+                                radius: [50]
+                    ScrollView:
+                        do_scroll_y: False
+                        do_scroll_x: True
+                        size_hint_y: .15
+                        pos_hint: {"top": .88}
+                        bar_width: 0
+                        GridLayout:
+                            id: grid
+                            size_hint_x: None
+                            height: self.minimum_height
+                            width: self.minimum_width
+                            rows: 1
+                            spacing: 25
+                            padding: 20, 15
+
+                    MDBoxLayout:
+                        md_bg_color: 1, 1, 1, 1
+                        orientation: "vertical"
+                        size_hint: 1, .7
+                        pos_hint: {"center_x": .5, "y": 0}
+                        radius: [40,40, 0, 0]
+                        Label:
+                            id: design
+                            canvas:
+                                Color:
+                                    rgba: 230/255, 230/255, 230/255, 1
+                                RoundedRectangle:
+                                    size: self.width/12, 3
+                                    pos: self.width/2 - (self.width/8)/2, self.parent.height - 15
+                                    radius: [2]
+                        RecycleView:
+                            id: rv
+                            viewclass: 'ChatItem'
+                            size_hint_y: 7
+                            RecycleBoxLayout:
+                                default_size: None, 100
+                                default_size_hint: 1, None
+                                size_hint_y: None
+                                height: self.minimum_height
+                                orientation: 'vertical'
+                        
+                                
+                            
+                                
+
+
+
+                            
+                            
+                                
+                            
+                            
+        MDBottomNavigationItem:
+            name: 'screen 2'
+            text: 'Groups'
+            icon: 'account-group-outline'
+            badge_icon: "numeric-5"
+
+
+            MDScreen:
+                radius: [0, 0, 0, 0]
+                md_bg_color: 0, 14/255, 8/255, 1
+                AnchorLayout:
+                    anchor_x: 'center'
+                    anchor_y: 'top'
+                    MDTopAppBar:
+                        title: "Home"
+                        md_bg_color:0, 14/255, 8/255, 1
+                        left_action_items: [["magnify", "This is the search button"]]
+                        specific_text_color: 1, 1, 1, 1
+                        right_action_items: [["dots-vertical"]]
+                        elevation: 0
+
+                MDFloatLayout:
+                    MDIconButton:
+                        icon: '4.jpg'
+                        icon_size: '30dp'
+                        theme_icon_color: "Custom"
+                        pos_hint: {'right': 0.98, 'top': 0.99}
+                        
+                        canvas:
+                            Color: 
+                                rgb: 1, 1, 1, 1
+                            RoundedRectangle:
+                                source: '4.jpg'
+                                size: self.size
+                                pos: self.pos
+                                radius: [50]
+        MDBottomNavigationItem:
+            name: 'screen 3'
+            text: 'Announce'
+            icon: 'bullhorn-outline'
+
+
+            MDScreen:
+                radius: [0, 0, 0, 0]
+                md_bg_color: 0, 14/255, 8/255, 1
+                AnchorLayout:
+                    anchor_x: 'center'
+                    anchor_y: 'top'
+                    MDTopAppBar:
+                        title: "Home"
+                        md_bg_color: 0, 14/255, 8/255, 1
+                        left_action_items: [["magnify", "This is the search button"]]
+                        specific_text_color: 1, 1, 1, 1
+                        right_action_items: [["dots-vertical"]]
+                        elevation: 0
+
+                MDFloatLayout:
+                    MDIconButton:
+                        icon: '4.jpg'
+                        icon_size: '30dp'
+                        theme_icon_color: "Custom"
+                        pos_hint: {'right': 0.98, 'top': 0.99}
+                        
+                        canvas:
+                            Color: 
+                                rgb: 1, 1, 1, 1
+                            RoundedRectangle:
+                                source: '4.jpg'
+                                size: self.size
+                                pos: self.pos
+                                radius: [50]
+        MDBottomNavigationItem:
+            name: 'screen4'
+            text: 'Settings'
+            icon: 'cog-outline'
+            MDScreen:
+                id: male
+                radius: [0, 0, 0, 0]
+                md_bg_color: 0, 14/255, 8/255, 1
+                AnchorLayout:
+                    id: female
+                    anchor_x: 'center'
+                    anchor_y: 'top'
+                    MDTopAppBar:
+                        title: "Home"
+                        id: boy
+                        md_bg_color: 0, 14/255, 8/255, 1
+                        left_action_items: [["magnify", "This is the search button"]]
+                        specific_text_color: 1, 1, 1, 1
+                        right_action_items: [["dots-vertical"]]
+                        elevation: 0
+                        font_size: "40dp"
+
+                MDFloatLayout:
+                    MDIconButton:
+                        id: girl
+                        icon: '4.jpg'
+                        icon_size: '30dp'
+                        theme_icon_color: "Custom"
+                        pos_hint: {'right': 0.98, 'top': 0.99}
+                        
+                        canvas:
+                            Color: 
+                                rgb: 1, 1, 1, 1
+                            RoundedRectangle:
+                                source: '4.jpg'
+                                size: self.size
+                                pos: self.pos
+                                radius: [50]
+
+
+
+<Screen7>:
+    name: "Screen7"
     canvas.before:
         PushMatrix:
         Color:
-            rgba: 1, 1, 1, 1
+            rgba: 1, 0, 0, 1
         Rectangle:
             size: self.size
             pos: self.pos
+
 
 
 <SmoothButton@Button>:
@@ -602,4 +814,88 @@
             size: self.size
             pos: self.pos
             radius: [15]
-            
+
+
+<ImageButton>:
+    icon: ''
+    icon_size: '30dp'
+    theme_icon_color: "Custom"
+    pos_hint: {'right': 0.98, 'top': 0.99}
+    
+    canvas:
+        Color: 
+            rgb: 1, 1, 1, 1
+        RoundedRectangle:
+            source: self.image_source
+            size: self.size
+            pos: self.pos
+            radius: [50]
+    canvas.before:
+        Color:
+            rgb: 36/255, 120/255, 109/255, 1
+        Line:
+            width: 1.2
+            circle: (self.center_x, self.center_y, min(self.width+8, self.height+8)/2, 0, 360)
+
+<ChatItem>:
+    size_hint: 1, None
+    height: 80
+    orientation:"horizontal"
+    Button:
+        background_normal: ''
+        background_down: ''
+        background_color: 1, 1, 1, 1
+        id: button1
+        text: ""
+        Button: #Icon
+            background_normal: ''
+            background_down: ''
+            background_color: 0, 0, 0, 0
+            #text: "I am a girl"
+            size_hint: None, None
+            size: "55dp" , "55dp"
+            pos: self.parent.pos[0] + 10, self.parent.pos[1] + 12
+            canvas:
+                Color: 
+                    rgb: 1, 1, 1, 1
+                RoundedRectangle:
+                    source: root.avatar
+                    size: self.size
+                    pos: self.pos
+                    radius: [50]
+        BoxLayout:
+            orientation: "vertical"
+            pos: self.parent.width/2 - (self.parent.width*0.29), self.parent.pos[1] + 2
+            Label:
+                id: uppertext
+                text: root.uppertext
+                font_size: "22dp"
+                color: 0, 14/255, 8/255, 1
+        BoxLayout:
+            orientation: "vertical"
+            pos: self.parent.width/2 - (self.parent.width*0.18) , self.parent.pos[1] - 24
+            Label:
+                id: lovertext
+                text: root.lowertext
+                font_name: "fonts/Montserrat-Light.ttf"
+                font_size: "15dp"
+                color: 121/255, 124/255, 123/255, 1
+        BoxLayout:
+            orientation: "vertical"
+            pos: self.parent.width/2 + 100 , self.parent.pos[1] + 5
+            Label:
+                id: timeline
+                text: root.timeline
+                font_size: "12dp" 
+                font_name: "fonts/Montserrat-Light.ttf"
+                color: 121/255, 124/255, 123/255, 1
+        BoxLayout:
+            orientation: "vertical"   
+            pos: self.parent.width/2 + 137 , self.parent.pos[1] + 20
+            MDIcon:
+                color: 1, 0, 0, 1
+                icon: root.icon
+    
+
+
+

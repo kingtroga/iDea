@@ -8,10 +8,18 @@ from kivy.app import App
 from kivy.uix.screenmanager import Screen, ScreenManager, NoTransition, WipeTransition
 from kivy.core.text import LabelBase
 from kivy.core.window import Window, WindowBase
+from kivymd.app import MDApp
 from kivy.clock import Clock
+from kivy.uix.button import Button
 from kivytransitions.transitions import SimpleZoom
 from kivy.animation import Animation
 from kivy.metrics import dp
+from kivymd.uix.button.button import MDIconButton
+from kivymd.uix.bottomnavigation.bottomnavigation import MDBottomNavigation
+from kivy.utils import get_color_from_hex
+from kivy.lang import Builder
+from kivy.uix.boxlayout import BoxLayout
+from kivy.properties import StringProperty
 
 #for changing the default screen size dynamicly
 #Window.size = (375, 812)
@@ -46,10 +54,61 @@ class Screen4(Screen):
 class Screen5(Screen):
     pass
 
-class Screen6(Screen):
-    pass
 
-class IdeaApp(App):
+
+class Screen6(Screen):
+    current = 0
+    user_list = {"1" : "image_1", "2" : "image_2", "3" : "image_3", 
+                "4" : "image_4", "5" : "image_5", "6" : "image_6", }
+
+    def __init__(self, **kwargs):
+        super(Screen6, self).__init__(**kwargs)
+        self.name  = "Screen6"
+
+    def start_story(self):
+        for i in self.user_list:
+           self.ids['grid'].add_widget(ImageButton(image_source=f"{i}.jpg"))
+           self.ids['grid2'].add_widget(ChatItem(
+               avatar = '1.jpg',
+               uppertext = "Dr. Balogun",
+               lowertext = "I haven't seen your assin...",
+               timeline="2 min ago",
+               icon = "numeric-5-circle"
+           ))
+
+class Screen7(Screen):
+    pass   
+    
+
+class ChatItem(BoxLayout):
+    avatar = StringProperty()
+    uppertext = StringProperty()
+    lowertext = StringProperty()
+    timeline = StringProperty()
+    icon = StringProperty()
+
+class ImageButton(MDIconButton):
+    image_source = StringProperty()
+
+
+class IdeaApp(MDApp):
+
+    current = 0
+    user_list = {"1" : "image_1", "2" : "image_2", "3" : "image_3", 
+                "4" : "image_4", "5" : "image_5", "6" : "image_6", }
+
+    def start_story(self):
+        for i in self.user_list:
+           self.root.screens[5].ids['grid'].add_widget(ImageButton(image_source=f"{i}.jpg"))
+           self.root.screens[5].ids['rv'].data.append({
+               'avatar' : '1.jpg',
+               "uppertext": "Dr. Balogun",
+               "lowertext": "I haven't seen your assin...",
+               "timeline":"2 min ago",
+               "icon": "numeric-5-circle"
+           })
+
+
     def build(self):
         self.sm = RootWidget()
         return self.sm
@@ -95,8 +154,8 @@ class IdeaApp(App):
     
     def change_to_screen6(self, button):
         self.sm.transition = WipeTransition()
-        self.sm.current = "Screen6"
-
+        self.sm.current="Screen6"
+        
 
     def handle_loginBtn2_press(self):
         loginBtn = self.root.screens[3].ids['log_in_button2']
@@ -121,6 +180,9 @@ class IdeaApp(App):
         signUpBtn2 = self.root.screens[4].ids['signUpBtn2']
         signUpBtn2_anim = Animation(back_color= (243/255, 246/255, 246/255, 1), color=(121/255, 124/255, 123/255, 1), duration=0.03)
         signUpBtn2_anim.start(signUpBtn2)
+    
+
+
 
     #def handle_press(self, widget):
     #   widget.color=(0.5, 0.5, 0.5, 1)
