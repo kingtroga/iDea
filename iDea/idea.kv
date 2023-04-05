@@ -621,7 +621,7 @@
                             Color: 
                                 rgb: 1, 1, 1, 1
                             RoundedRectangle:
-                                source: '4.jpg'
+                                source: self.icon
                                 size: self.size
                                 pos: self.pos
                                 radius: [50]
@@ -691,7 +691,8 @@
                     anchor_x: 'center'
                     anchor_y: 'top'
                     MDTopAppBar:
-                        title: "Home"
+                        title: "Groups"
+                        font_name: "fonts/Arial-MT-Black.ttf"
                         md_bg_color:0, 14/255, 8/255, 1
                         left_action_items: [["magnify", "This is the search button"]]
                         specific_text_color: 1, 1, 1, 1
@@ -713,6 +714,27 @@
                                 size: self.size
                                 pos: self.pos
                                 radius: [50]
+########################################################################################################################################################
+#### The White Part of the Screen code#################################################################################################################################
+#########################################################################################################################################################################
+                    MDBoxLayout:
+                        md_bg_color: 1, 1, 1, 1
+                        orientation: "vertical"
+                        size_hint: 1, .7
+                        pos_hint: {"center_x": .5, "y": 0}
+                        radius: [40,40, 0, 0]
+                        Label:
+                            id: design
+                            canvas:
+                                Color:
+                                    rgba: 230/255, 230/255, 230/255, 1
+                                RoundedRectangle:
+                                    size: self.width/12, 3
+                                    pos: self.width/2 - (self.width/8)/2, self.parent.height - 15
+                                    radius: [2]
+
+
+
         MDBottomNavigationItem:
             name: 'screen 3'
             text: 'Announce'
@@ -726,7 +748,8 @@
                     anchor_x: 'center'
                     anchor_y: 'top'
                     MDTopAppBar:
-                        title: "Home"
+                        title: "Annoucements"
+                        font_name: "fonts/Arial-MT-Black.ttf"
                         md_bg_color: 0, 14/255, 8/255, 1
                         left_action_items: [["magnify", "This is the search button"]]
                         specific_text_color: 1, 1, 1, 1
@@ -748,6 +771,26 @@
                                 size: self.size
                                 pos: self.pos
                                 radius: [50]
+########################################################################################################################################################
+#### The White Part of the Screen code#################################################################################################################################
+#########################################################################################################################################################################
+                    MDBoxLayout:
+                        md_bg_color: 1, 1, 1, 1
+                        orientation: "vertical"
+                        size_hint: 1, .88
+                        pos_hint: {"center_x": .5, "y": 0}
+                        radius: [40,40, 0, 0]
+                        Label:
+                            id: design
+                            canvas:
+                                Color:
+                                    rgba: 230/255, 230/255, 230/255, 1
+                                RoundedRectangle:
+                                    size: self.width/12, 3
+                                    pos: self.width/2 - (self.width/8)/2, self.parent.height - 15
+                                    radius: [2]
+
+
         MDBottomNavigationItem:
             name: 'screen4'
             text: 'Settings'
@@ -761,7 +804,7 @@
                     anchor_x: 'center'
                     anchor_y: 'top'
                     MDTopAppBar:
-                        title: "Home"
+                        title: "Settings"
                         id: boy
                         md_bg_color: 0, 14/255, 8/255, 1
                         left_action_items: [["magnify", "This is the search button"]]
@@ -786,6 +829,24 @@
                                 size: self.size
                                 pos: self.pos
                                 radius: [50]
+########################################################################################################################################################
+#### The White Part of the Screen code#################################################################################################################################
+#########################################################################################################################################################################
+                    MDBoxLayout:
+                        md_bg_color: 1, 1, 1, 1
+                        orientation: "vertical"
+                        size_hint: 1, .88
+                        pos_hint: {"center_x": .5, "y": 0}
+                        radius: [40,40, 0, 0]
+                        Label:
+                            id: design
+                            canvas:
+                                Color:
+                                    rgba: 230/255, 230/255, 230/255, 1
+                                RoundedRectangle:
+                                    size: self.width/12, 3
+                                    pos: self.width/2 - (self.width/8)/2, self.parent.height - 15
+                                    radius: [2]
 
 
 
@@ -817,10 +878,12 @@
 
 
 <ImageButton>:
+    id: IB
     icon: ''
     icon_size: '30dp'
     theme_icon_color: "Custom"
     pos_hint: {'right': 0.98, 'top': 0.99}
+    color_line: 1, 1, 1, 1
     
     canvas:
         Color: 
@@ -832,7 +895,7 @@
             radius: [50]
     canvas.before:
         Color:
-            rgb: 36/255, 120/255, 109/255, 1
+            rgb: self.color_line
         Line:
             width: 1.2
             circle: (self.center_x, self.center_y, min(self.width+8, self.height+8)/2, 0, 360)
@@ -866,35 +929,44 @@
         BoxLayout:
             orientation: "vertical"
             pos: self.parent.pos[0] + 80, self.parent.pos[1] + 2
-            Label:
+            size_hint: None, 1
+            width: 200
+            MDLabel:
                 id: uppertext
                 text: root.uppertext
                 font_size: "22dp"
                 color: 0, 14/255, 8/255, 1
+                halign: "left"
+                
         BoxLayout:
             orientation: "vertical"
-            pos: self.parent.pos[0] + 125 , self.parent.pos[1] - 24
-            Label:
+            pos: self.parent.pos[0] + 80 , self.parent.pos[1] - 24
+            size_hint: None, 1
+            width: 300
+            MDLabel:
                 id: lovertext
                 text: root.lowertext
                 font_name: "fonts/Montserrat-Light.ttf"
                 font_size: "15dp"
                 color: 121/255, 124/255, 123/255, 1
+                halign: "left"
         BoxLayout:
             orientation: "vertical"
             pos: self.parent.width - 100, self.parent.pos[1] + 5
-            Label:
+            MDLabel:
                 id: timeline
                 text: root.timeline
                 font_size: "12dp" 
                 font_name: "fonts/Montserrat-Light.ttf"
                 color: 121/255, 124/255, 123/255, 1
+                halign: "center"
         BoxLayout:
             orientation: "vertical"   
             pos: self.parent.width - 60 , self.parent.pos[1] + 20
             MDIcon:
                 color: 1, 0, 0, 1
                 icon: root.icon
+                halign: "left"
     
 
 

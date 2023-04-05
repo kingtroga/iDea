@@ -19,7 +19,8 @@ from kivymd.uix.bottomnavigation.bottomnavigation import MDBottomNavigation
 from kivy.utils import get_color_from_hex
 from kivy.lang import Builder
 from kivy.uix.boxlayout import BoxLayout
-from kivy.properties import StringProperty
+from kivy.properties import StringProperty, ListProperty
+from PIL import Image
 
 #for changing the default screen size dynamicly
 #Window.size = (375, 812)
@@ -55,26 +56,15 @@ class Screen5(Screen):
     pass
 
 
+class ImageButton(MDIconButton):
+    image_source = StringProperty()
+    color_line = ListProperty()
 
 class Screen6(Screen):
-    current = 0
-    user_list = {"1" : "image_1", "2" : "image_2", "3" : "image_3", 
-                "4" : "image_4", "5" : "image_5", "6" : "image_6", }
-
     def __init__(self, **kwargs):
         super(Screen6, self).__init__(**kwargs)
         self.name  = "Screen6"
 
-    def start_story(self):
-        for i in self.user_list:
-           self.ids['grid'].add_widget(ImageButton(image_source=f"{i}.jpg"))
-           self.ids['grid2'].add_widget(ChatItem(
-               avatar = '1.jpg',
-               uppertext = "Dr. Balogun",
-               lowertext = "I haven't seen your assin...",
-               timeline="2 min ago",
-               icon = "numeric-5-circle"
-           ))
 
 class Screen7(Screen):
     pass   
@@ -87,8 +77,8 @@ class ChatItem(BoxLayout):
     timeline = StringProperty()
     icon = StringProperty()
 
-class ImageButton(MDIconButton):
-    image_source = StringProperty()
+
+
 
 
 class IdeaApp(MDApp):
@@ -97,17 +87,54 @@ class IdeaApp(MDApp):
     user_list = {"1" : "image_1", "2" : "image_2", "3" : "image_3", 
                 "4" : "image_4", "5" : "image_5", "6" : "image_6", }
 
+    uppertext_list = {"1": "Dr. Balogun", "2": "300L Computer Sc..", 
+                "3": "Abraham John", "4": "Shalom", 
+                "5": "19010301024", "6":"Angel Dayna"}
+
+    lowertext_list = {"1": "I haven't seen your assign...", "2":"There will be CSC 307 class...",
+                "3": "Hey! Can you join the meeting?", "4": "How are you today?",
+                "5": "Have a good day🌸", "6": "How are you today?"}
+
+    timeline_list = {"1": "2 min ago", "2": "2 min ago", "3": "2 min ago",
+                "4": "5 min ago", "5": "yesterday", "6": "2 min ago"}
+
+    icon_list = {"1": "numeric-3-circle", "2": "numeric-4-circle", "3":"",
+            "4":"", "5":"", "6":""}
+
     def start_story(self):
         for i in self.user_list:
-           self.root.screens[5].ids['grid'].add_widget(ImageButton(image_source=f"{i}.jpg"))
-           self.root.screens[5].ids['rv'].data.append({
-               'avatar' : '1.jpg',
-               "uppertext": "Dr. Balogun",
-               "lowertext": "I haven't seen your assin...",
-               "timeline":"2 min ago",
-               "icon": "numeric-5-circle"
+            img = Image.open(f'{i}.jpg')
+
+            self.root.screens[5].ids['grid'].add_widget(ImageButton(image_source=f"{i}.jpg", color_line=self.get_dominant_color(img)))
+
+            self.root.screens[5].ids['rv'].data.append({
+               'avatar' : f'{i}.jpg',
+               "uppertext": self.uppertext_list[i],
+               "lowertext": self.lowertext_list[i],
+               "timeline": self.timeline_list[i],
+               "icon": self.icon_list[i]
            })
 
+
+
+    def get_dominant_color(self, pil_img, palette_size=16):
+        # Resize image to speed up processing
+        img = pil_img.copy()
+        img.thumbnail((100, 100))
+
+        # Reduce colors (uses k-means internally)
+        paletted = img.convert('P', palette=Image.ADAPTIVE, colors=palette_size)
+
+        # Find the color that occurs most often
+        palette = paletted.getpalette()
+        color_counts = sorted(paletted.getcolors(), reverse=True)
+        palette_index = color_counts[0][1]
+        dominant_color = palette[palette_index*3:palette_index*3+3]
+        kivy_color = []
+        for i in dominant_color:
+            kivy_color.append(i/255)
+        kivy_color.append(1)
+        return kivy_color
 
     def build(self):
         self.sm = RootWidget()
