@@ -865,7 +865,7 @@
                     radius: [50]
         BoxLayout:
             orientation: "vertical"
-            pos: self.parent.width/2 - (self.parent.width*0.29), self.parent.pos[1] + 2
+            pos: self.parent.pos[0] + 80, self.parent.pos[1] + 2
             Label:
                 id: uppertext
                 text: root.uppertext
@@ -873,7 +873,7 @@
                 color: 0, 14/255, 8/255, 1
         BoxLayout:
             orientation: "vertical"
-            pos: self.parent.width/2 - (self.parent.width*0.18) , self.parent.pos[1] - 24
+            pos: self.parent.pos[0] + 125 , self.parent.pos[1] - 24
             Label:
                 id: lovertext
                 text: root.lowertext
@@ -882,7 +882,7 @@
                 color: 121/255, 124/255, 123/255, 1
         BoxLayout:
             orientation: "vertical"
-            pos: self.parent.width/2 + 100 , self.parent.pos[1] + 5
+            pos: self.parent.width - 100, self.parent.pos[1] + 5
             Label:
                 id: timeline
                 text: root.timeline
@@ -891,7 +891,7 @@
                 color: 121/255, 124/255, 123/255, 1
         BoxLayout:
             orientation: "vertical"   
-            pos: self.parent.width/2 + 137 , self.parent.pos[1] + 20
+            pos: self.parent.width - 60 , self.parent.pos[1] + 20
             MDIcon:
                 color: 1, 0, 0, 1
                 icon: root.icon
