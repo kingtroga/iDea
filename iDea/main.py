@@ -21,6 +21,7 @@ from kivy.lang import Builder
 from kivy.uix.boxlayout import BoxLayout
 from kivy.properties import StringProperty, ListProperty
 from PIL import Image
+from kivymd.uix.list.list import TwoLineAvatarListItem, ImageLeftWidget
 
 #for changing the default screen size dynamicly
 #Window.size = (375, 812)
@@ -84,6 +85,10 @@ class ChatItem(BoxLayout):
 class IdeaApp(MDApp):
 
     current = 0
+
+    #############################Chat Screen#######################################
+    ##############################stuff#############################################
+    #######################################################################################
     user_list = {"1" : "image_1", "2" : "image_2", "3" : "image_3", 
                 "4" : "image_4", "5" : "image_5", "6" : "image_6", }
 
@@ -100,7 +105,14 @@ class IdeaApp(MDApp):
 
     icon_list = {"1": "numeric-3-circle", "2": "numeric-4-circle", "3":"",
             "4":"", "5":"", "6":""}
-
+    ###########################Group Screen###################################################
+    ###########################Stuff###########################################################
+    ###########################################################################################
+    group_icon_list = {"7": "image_7", "8": "image_8", "9": "image_9"}
+    group_uppertext_list = {"7": "400L Computer Science", "8": "300L CSC",
+                            "9": "Cyber Security" }
+    group_lowertext_list = {"7": "Final Year Brethren", "8": "Keep working✍🏾",
+                            "9": "200 L Cyber Security Students"}
     def start_story(self):
         for i in self.user_list:
             img = Image.open(f'{i}.jpg')
@@ -115,7 +127,15 @@ class IdeaApp(MDApp):
                "icon": self.icon_list[i]
            })
 
-
+    def get_groups(self):
+        for i in self.group_icon_list:
+            self.root.screens[5].ids['svu'].data.append({
+                'avatar' : f'{i}.jpg',
+               "uppertext": self.group_uppertext_list[i],
+               "lowertext": self.group_lowertext_list[i],
+               "timeline": '',
+               "icon": ''
+            })
 
     def get_dominant_color(self, pil_img, palette_size=16):
         # Resize image to speed up processing

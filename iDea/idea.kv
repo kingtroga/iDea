@@ -31,7 +31,7 @@
 
 
 <Screen1>:
-    on_touch_down: root.manager.current = "Screen2"
+    #on_touch_down: root.manager.current = "Screen2"
     
     name: "Screen1"
     canvas.before:
@@ -69,6 +69,9 @@
             
 <Screen3>:
     name: "Screen3"
+    on_leave: 
+        app.start_story()
+        #app.get_groups()
     canvas.before:
         PushMatrix:
         Color:
@@ -584,7 +587,10 @@
 
 <Screen6>:
     name: "Screen6"
-    on_enter: app.start_story()
+    #on_enter: app.start_story()
+###########################################################################################################################################################################################################################
+################################## THE MESSAGE SCREEN ######################################################################################################################################################3##############
+###########################################################################################################################################################################################################################
     MDBottomNavigation:
         id: bottom_navigation
         selected_color_background: get_color_from_hex('FFFFFF')
@@ -611,6 +617,21 @@
                         elevation: 0
 
                 MDFloatLayout:
+##################The first part of the MDTopBar##########################################################################################################################################
+                    MDIconButton:
+                        icon: ''
+                        icon_color: 1, 1, 1, 1
+                        icon_size: '30dp'
+                        theme_icon_color: "Custom"
+                        pos_hint: {'right': 0.16, 'top': 0.99}
+                        
+                        canvas:
+                            Color:
+                                rgb: 59/255, 63/255, 59/255, 1
+                            Line:
+                                width: 1
+                                circle: (self.center_x, self.center_y, min(self.width-2, self.height-2)/2, 0, 360)
+#################The Second part of the MDTopBar###########################################################################################################################################333
                     MDIconButton:
                         icon: '4.jpg'
                         icon_size: '30dp'
@@ -665,18 +686,9 @@
                                 size_hint_y: None
                                 height: self.minimum_height
                                 orientation: 'vertical'
-                        
-                                
-                            
-                                
-
-
-
-                            
-                            
-                                
-                            
-                            
+##############################################################################################################################################################################################################
+############# THE GROUP SCREEN ###############################################################################################################################################################################
+##############################################################################################################################################################################################################                                               
         MDBottomNavigationItem:
             name: 'screen 2'
             text: 'Groups'
@@ -696,24 +708,47 @@
                         md_bg_color:0, 14/255, 8/255, 1
                         left_action_items: [["magnify", "This is the search button"]]
                         specific_text_color: 1, 1, 1, 1
-                        right_action_items: [["dots-vertical"]]
+                        right_action_items: [["circle-small"]]
                         elevation: 0
 
                 MDFloatLayout:
+                    
+##################The first part of the MDTopBar######################################################################
                     MDIconButton:
-                        icon: '4.jpg'
+                        icon: ''
+                        icon_color: 1, 1, 1, 1
+                        icon_size: '30dp'
+                        theme_icon_color: "Custom"
+                        pos_hint: {'right': 0.16, 'top': 0.99}
+                        
+                        canvas:
+                            Color:
+                                rgb: 59/255, 63/255, 59/255, 1
+                            Line:
+                                width: 1
+                                circle: (self.center_x, self.center_y, min(self.width-2, self.height-2)/2, 0, 360)
+
+###################The second part of the MDTopBar########################################################
+
+                    # To hid the real MDTopAppBar right icon
+                    MDBoxLayout:
+                        size_hint: None, None
+                        size: 100, 100
+                        pos_hint: {'right': 0.98, 'top': 0.99}
+                        md_bg_color: 0, 14/255, 8/255, 1
+                    MDIconButton:
+                        icon: 'account-multiple-plus-outline'
+                        icon_color: 1, 1, 1, 1
                         icon_size: '30dp'
                         theme_icon_color: "Custom"
                         pos_hint: {'right': 0.98, 'top': 0.99}
                         
                         canvas:
-                            Color: 
-                                rgb: 1, 1, 1, 1
-                            RoundedRectangle:
-                                source: '4.jpg'
-                                size: self.size
-                                pos: self.pos
-                                radius: [50]
+                            Color:
+                                rgb: 59/255, 63/255, 59/255, 1
+                            Line:
+                                width: 1
+                                circle: (self.center_x, self.center_y, min(self.width-2, self.height-2)/2, 0, 360)
 ########################################################################################################################################################
 #### The White Part of the Screen code#################################################################################################################################
 #########################################################################################################################################################################
@@ -723,24 +758,55 @@
                         size_hint: 1, .7
                         pos_hint: {"center_x": .5, "y": 0}
                         radius: [40,40, 0, 0]
-                        Label:
+                        Label: # the weird design
                             id: design
                             canvas:
                                 Color:
                                     rgba: 230/255, 230/255, 230/255, 1
                                 RoundedRectangle:
                                     size: self.width/12, 3
-                                    pos: self.width/2 - (self.width/8)/2, self.parent.height - 15
+                                    pos: self.width/2 - (self.width/8)/2, self.parent.height - 40
                                     radius: [2]
 
 
+                        MDFloatLayout:
+                            #orientation: "vertical"
+                            pos_hint: {"center_x": 0.5, "y": -100}
+                            y: 100
+                            size_hint: 0.75, None
+                            #md_bg_color: 1, 0, 0, 1
+                            height: 70
+                            MDLabel:
+                                color: 121/255, 124/255, 123/255, 1
+                                font_name:"fonts/Montserrat-Light.ttf"
+                                text: "Create more groups provided it meets the terms conditions of this app and the school(MTU)"
+                                font_size: "15dp"
+                                halign: "center"
+                                pos_hint: {"center_x": 0.5, "center_y": -3.95}
 
+                            
+                                
+
+
+
+
+                        RecycleView:
+                            id: rv2
+                            viewclass: 'ChatItem'
+                            size_hint_y: 7
+                            RecycleBoxLayout:
+                                default_size: None, 100
+                                default_size_hint: 1, None
+                                size_hint_y: None
+                                height: self.minimum_height
+                                orientation: 'vertical'                 
+################################################################################################################################################################################33
+############################## THE ANNOUCEMENTS SCREEN ####################################################################################################################################3
+#########################################################################################################################################################################################################
         MDBottomNavigationItem:
             name: 'screen 3'
             text: 'Announce'
             icon: 'bullhorn-outline'
-
-
             MDScreen:
                 radius: [0, 0, 0, 0]
                 md_bg_color: 0, 14/255, 8/255, 1
@@ -757,20 +823,42 @@
                         elevation: 0
 
                 MDFloatLayout:
+##################The first part of the MDTopBar##########################################################################################################################################
                     MDIconButton:
-                        icon: '4.jpg'
+                        icon: ''
+                        icon_color: 1, 1, 1, 1
+                        icon_size: '30dp'
+                        theme_icon_color: "Custom"
+                        pos_hint: {'right': 0.16, 'top': 0.99}
+                        
+                        canvas:
+                            Color:
+                                rgb: 59/255, 63/255, 59/255, 1
+                            Line:
+                                width: 1
+                                circle: (self.center_x, self.center_y, min(self.width-2, self.height-2)/2, 0, 360)
+#################The Second part of the MDTopBar###########################################################################################################################################333
+                    # to hide real MDTopAppBar right icon
+                    MDBoxLayout:
+                        size_hint: None, None
+                        size: 100, 100
+                        pos_hint: {'right': 0.98, 'top': 0.99}
+                        md_bg_color: 0, 14/255, 8/255, 1
+
+
+                    MDIconButton:
+                        icon: '' # Not needed
+                        icon_color: 1, 1, 1, 1
                         icon_size: '30dp'
                         theme_icon_color: "Custom"
                         pos_hint: {'right': 0.98, 'top': 0.99}
                         
                         canvas:
-                            Color: 
-                                rgb: 1, 1, 1, 1
-                            RoundedRectangle:
-                                source: '4.jpg'
-                                size: self.size
-                                pos: self.pos
-                                radius: [50]
+                            Color:
+                                rgb: 59/255, 63/255, 59/255, 1
+                            Line:
+                                width: 1
+                                circle: (self.center_x, self.center_y, min(self.width-2, self.height-2)/2, 0, 360)
 ########################################################################################################################################################
 #### The White Part of the Screen code#################################################################################################################################
 #########################################################################################################################################################################
@@ -789,8 +877,9 @@
                                     size: self.width/12, 3
                                     pos: self.width/2 - (self.width/8)/2, self.parent.height - 15
                                     radius: [2]
-
-
+##################################################################################################################################################################################
+###########################THE SETTINGS SCREEN ##############################################################################################################################################3
+##########################################################################################################################################################################################################
         MDBottomNavigationItem:
             name: 'screen4'
             text: 'Settings'
@@ -807,28 +896,24 @@
                         title: "Settings"
                         id: boy
                         md_bg_color: 0, 14/255, 8/255, 1
-                        left_action_items: [["magnify", "This is the search button"]]
+                        left_action_items: [["arrow-left", "This is the search button"]]
                         specific_text_color: 1, 1, 1, 1
                         right_action_items: [["dots-vertical"]]
                         elevation: 0
                         font_size: "40dp"
 
                 MDFloatLayout:
-                    MDIconButton:
-                        id: girl
-                        icon: '4.jpg'
-                        icon_size: '30dp'
-                        theme_icon_color: "Custom"
+##################The first part of the MDTopBar##########################################################################################################################################
+
+#################### Not needed
+
+#################The Second part of the MDTopBar###########################################################################################################################################333
+                    # No icon ( To hide the real MDTopBar icon)
+                    MDBoxLayout:
+                        size_hint: None, None
+                        size: 100, 100
                         pos_hint: {'right': 0.98, 'top': 0.99}
-                        
-                        canvas:
-                            Color: 
-                                rgb: 1, 1, 1, 1
-                            RoundedRectangle:
-                                source: '4.jpg'
-                                size: self.size
-                                pos: self.pos
-                                radius: [50]
+                        md_bg_color: 0, 14/255, 8/255, 1
 ########################################################################################################################################################
 #### The White Part of the Screen code#################################################################################################################################
 #########################################################################################################################################################################
