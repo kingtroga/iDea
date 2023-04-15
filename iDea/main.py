@@ -1,4 +1,4 @@
-# for changing the default screen size staticily
+# for changing the default screen size staticly
 from kivy.config import Config
 Config.set('graphics', 'width', '400')
 Config.set('graphics', 'height', '812')

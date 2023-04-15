@@ -69,9 +69,6 @@
             
 <Screen3>:
     name: "Screen3"
-    on_leave: 
-        app.start_story()
-        #app.get_groups()
     canvas.before:
         PushMatrix:
         Color:
@@ -587,7 +584,7 @@
 
 <Screen6>:
     name: "Screen6"
-    #on_enter: app.start_story()
+    on_enter: app.start_story()
 ###########################################################################################################################################################################################################################
 ################################## THE MESSAGE SCREEN ######################################################################################################################################################3##############
 ###########################################################################################################################################################################################################################
@@ -914,10 +911,10 @@
                         size: 100, 100
                         pos_hint: {'right': 0.98, 'top': 0.99}
                         md_bg_color: 0, 14/255, 8/255, 1
-########################################################################################################################################################
+#######################################################################################################################################################################################################################################################################################################333
 #### The White Part of the Screen code#################################################################################################################################
 #########################################################################################################################################################################
-                    MDBoxLayout:
+                    MDFloatLayout:
                         md_bg_color: 1, 1, 1, 1
                         orientation: "vertical"
                         size_hint: 1, .88
@@ -932,6 +929,21 @@
                                     size: self.width/12, 3
                                     pos: self.width/2 - (self.width/8)/2, self.parent.height - 15
                                     radius: [2]
+                        ChatItem:
+                            avatar: '4.jpg'
+                            uppertext: "Janet Doe"
+                            lowertext: "Who am I?"
+                            iconp_size: "70dp"
+                            bold: True
+                            text_icon_dis: 94
+                            uppertextY: 4
+                            lowertextY: 20
+                            pos: self.parent.width - self.parent.width + 20, self.parent.height - 130
+                            back_color: get_color_from_hex("FFFFFF")
+                            font_fam1: "fonts/ARIALMTMEDIUM.TTF"
+                        
+                            
+
 
 
 
@@ -988,20 +1000,28 @@
 <ChatItem>:
     size_hint: 1, None
     height: 80
+    id: chat_item
     orientation:"horizontal"
+    iconp_size: "55dp"
+    text_icon_dis: 80
+    uppertextY: 2
+    lowertextY: 24
+    back_color: 1, 1, 1, 1
+    font_fam1: "fonts/arialmt.ttf"
     Button:
         background_normal: ''
         background_down: ''
-        background_color: 1, 1, 1, 1
+        background_color: chat_item.back_color
         id: button1
         text: ""
-        Button: #Icon
+        Button:
+            #ICON
             background_normal: ''
             background_down: ''
             background_color: 0, 0, 0, 0
             #text: "I am a girl"
             size_hint: None, None
-            size: "55dp" , "55dp"
+            size: chat_item.iconp_size , chat_item.iconp_size
             pos: self.parent.pos[0] + 10, self.parent.pos[1] + 12
             canvas:
                 Color: 
@@ -1013,19 +1033,20 @@
                     radius: [50]
         BoxLayout:
             orientation: "vertical"
-            pos: self.parent.pos[0] + 80, self.parent.pos[1] + 2
+            pos: self.parent.pos[0] + chat_item.text_icon_dis, self.parent.pos[1] + chat_item.uppertextY#2
             size_hint: None, 1
             width: 200
             MDLabel:
                 id: uppertext
                 text: root.uppertext
                 font_size: "22dp"
+                font_name: chat_item.font_fam1
                 color: 0, 14/255, 8/255, 1
                 halign: "left"
                 
         BoxLayout:
             orientation: "vertical"
-            pos: self.parent.pos[0] + 80 , self.parent.pos[1] - 24
+            pos:  self.parent.pos[0] + chat_item.text_icon_dis, self.parent.pos[1] - chat_item.lowertextY#24
             size_hint: None, 1
             width: 300
             MDLabel:
