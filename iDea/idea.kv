@@ -1,7 +1,6 @@
 #: import WipeTransition kivy.uix.screenmanager.WipeTransition
 #: import get_color_from_hex kivy.utils.get_color_from_hex
 <RootWidget>:
-    
     id: sm
     transition: WipeTransition()
     current: "Screen1"
@@ -584,7 +583,7 @@
 
 <Screen6>:
     name: "Screen6"
-    on_enter: app.start_story()
+    #on_enter: app.start_story()
 ###########################################################################################################################################################################################################################
 ################################## THE MESSAGE SCREEN ######################################################################################################################################################3##############
 ###########################################################################################################################################################################################################################
@@ -933,7 +932,7 @@
                             avatar: '4.jpg'
                             uppertext: "Janet Doe"
                             lowertext: "Who am I?"
-                            iconp_size: "70dp"
+                            iconp_size: "50dp"
                             bold: True
                             text_icon_dis: 94
                             uppertextY: 4
@@ -941,6 +940,64 @@
                             pos: self.parent.width - self.parent.width + 20, self.parent.height - 130
                             back_color: get_color_from_hex("FFFFFF")
                             font_fam1: "fonts/ARIALMTMEDIUM.TTF"
+                            
+                        ChatItem:
+                            avatar: ''
+                            icon: 'key.png'
+                            icon_color: 121/255, 124/255, 123/255, 1
+                            #avatar2: 'key.png'
+                            uppertext: "Account"
+                            lowertext: "Privacy, security, change number"
+                            iconp_size: "30dp"
+                            #bold: True
+                            text_icon_dis: 94
+                            uppertextY: 4
+                            lowertextY: 20
+                            pos: self.parent.width - self.parent.width + 30, self.parent.height - 230
+                            back_color: 1, 0, 0.5, 1
+                            font_fam1: "fonts/ARIALMTLIGHT.TTF"
+                        ChatItem:
+                            avatar: 'key.png'
+                            #avatar2: 'key.png'
+                            uppertext: "Account"
+                            lowertext: "Privacy, security, change number"
+                            iconp_size: "55dp"
+                            #bold: True
+                            text_icon_dis: 94
+                            uppertextY: 4
+                            lowertextY: 20
+                            pos: self.parent.width - self.parent.width + 30, self.parent.height - 330
+                            back_color: 1, 0, 0.5, 1
+                            font_fam1: "fonts/ARIALMTLIGHT.TTF"
+                        ChatItem:
+                            avatar: 'key.png'
+                            #avatar2: 'key.png'
+                            uppertext: "Account"
+                            lowertext: "Privacy, security, change number"
+                            iconp_size: "55dp"
+                            #bold: True
+                            text_icon_dis: 94
+                            uppertextY: 4
+                            lowertextY: 20
+                            pos: self.parent.width - self.parent.width + 30, self.parent.height - 430
+                            back_color: 1, 0, 0.5, 1
+                            font_fam1: "fonts/ARIALMTLIGHT.TTF"
+                        ChatItem:
+                            avatar: 'key-outline.png'
+                            #avatar2: 'key.png'
+                            uppertext: "Account"
+                            lowertext: "Privacy, security, change number"
+                            iconp_size: "55dp"
+                            #bold: True
+                            text_icon_dis: 94
+                            uppertextY: 4
+                            lowertextY: 20
+                            pos: self.parent.width - self.parent.width + 30, self.parent.height - 530
+                            back_color: 1, 0, 0.5, 1
+                            font_fam1: "fonts/ARIALMTLIGHT.TTF"
+                            uppertext_size: "18dp"
+                            lowertext_size: "15dp"
+
                         
                             
 
@@ -1008,29 +1065,46 @@
     lowertextY: 24
     back_color: 1, 1, 1, 1
     font_fam1: "fonts/arialmt.ttf"
+    uppertext_size: "22dp"
+    lowertext_size: "15dp"
+    icon: ""
+    icon_color: 1,1,1,1
     Button:
         background_normal: ''
         background_down: ''
         background_color: chat_item.back_color
         id: button1
         text: ""
-        Button:
+        MDIconButton:
+        #Button:
             #ICON
             background_normal: ''
             background_down: ''
-            background_color: 0, 0, 0, 0
+            background_color: ''
             #text: "I am a girl"
             size_hint: None, None
+            icon_size: chat_item.iconp_size
+            icon: chat_item.icon
+            color: 1, 1, 1, 1
+            #icon_color: chat_item.icon_color
+            specific_text_color: 1, 1, 1, 1
+            theme_icon_color: "Custom"
             size: chat_item.iconp_size , chat_item.iconp_size
             pos: self.parent.pos[0] + 10, self.parent.pos[1] + 12
             canvas:
                 Color: 
-                    rgb: 1, 1, 1, 1
+                    rgb: 242/255, 248/255, 247/255, 1
                 RoundedRectangle:
-                    source: root.avatar
                     size: self.size
                     pos: self.pos
                     radius: [50]
+                RoundedRectangle:
+                    source: root.avatar
+                    #color: 1, 1, 1, 1
+                    size: self.size
+                    pos: self.pos
+                    radius: [50]
+
         BoxLayout:
             orientation: "vertical"
             pos: self.parent.pos[0] + chat_item.text_icon_dis, self.parent.pos[1] + chat_item.uppertextY#2
@@ -1039,7 +1113,7 @@
             MDLabel:
                 id: uppertext
                 text: root.uppertext
-                font_size: "22dp"
+                font_size: chat_item.uppertext_size
                 font_name: chat_item.font_fam1
                 color: 0, 14/255, 8/255, 1
                 halign: "left"
@@ -1053,7 +1127,7 @@
                 id: lovertext
                 text: root.lowertext
                 font_name: "fonts/Montserrat-Light.ttf"
-                font_size: "15dp"
+                font_size: chat_item.lowertext_size
                 color: 121/255, 124/255, 123/255, 1
                 halign: "left"
         BoxLayout:
