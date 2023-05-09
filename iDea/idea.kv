@@ -583,7 +583,7 @@
 
 <Screen6>:
     name: "Screen6"
-    #on_enter: app.start_story()
+    on_enter: app.start_story()
 ###########################################################################################################################################################################################################################
 ################################## THE MESSAGE SCREEN ######################################################################################################################################################3##############
 ###########################################################################################################################################################################################################################
@@ -931,72 +931,114 @@
                         ChatItem:
                             avatar: '4.jpg'
                             uppertext: "Janet Doe"
+                            icon_size: "45dp"
                             lowertext: "Who am I?"
-                            iconp_size: "50dp"
+                           
                             bold: True
                             text_icon_dis: 94
                             uppertextY: 4
                             lowertextY: 20
-                            pos: self.parent.width - self.parent.width + 20, self.parent.height - 130
+                            pos: self.parent.width - self.parent.width + 20, self.parent.height - 110
                             back_color: get_color_from_hex("FFFFFF")
                             font_fam1: "fonts/ARIALMTMEDIUM.TTF"
                             
                         ChatItem:
-                            avatar: ''
-                            icon: 'key.png'
-                            icon_color: 121/255, 124/255, 123/255, 1
+                            icon2: 'key-outline'
                             #avatar2: 'key.png'
                             uppertext: "Account"
                             lowertext: "Privacy, security, change number"
-                            iconp_size: "30dp"
+                            #iconp_size: "70dp"
+                            
                             #bold: True
                             text_icon_dis: 94
                             uppertextY: 4
                             lowertextY: 20
-                            pos: self.parent.width - self.parent.width + 30, self.parent.height - 230
-                            back_color: 1, 0, 0.5, 1
-                            font_fam1: "fonts/ARIALMTLIGHT.TTF"
-                        ChatItem:
-                            avatar: 'key.png'
-                            #avatar2: 'key.png'
-                            uppertext: "Account"
-                            lowertext: "Privacy, security, change number"
-                            iconp_size: "55dp"
-                            #bold: True
-                            text_icon_dis: 94
-                            uppertextY: 4
-                            lowertextY: 20
-                            pos: self.parent.width - self.parent.width + 30, self.parent.height - 330
-                            back_color: 1, 0, 0.5, 1
-                            font_fam1: "fonts/ARIALMTLIGHT.TTF"
-                        ChatItem:
-                            avatar: 'key.png'
-                            #avatar2: 'key.png'
-                            uppertext: "Account"
-                            lowertext: "Privacy, security, change number"
-                            iconp_size: "55dp"
-                            #bold: True
-                            text_icon_dis: 94
-                            uppertextY: 4
-                            lowertextY: 20
-                            pos: self.parent.width - self.parent.width + 30, self.parent.height - 430
-                            back_color: 1, 0, 0.5, 1
-                            font_fam1: "fonts/ARIALMTLIGHT.TTF"
-                        ChatItem:
-                            avatar: 'key-outline.png'
-                            #avatar2: 'key.png'
-                            uppertext: "Account"
-                            lowertext: "Privacy, security, change number"
-                            iconp_size: "55dp"
-                            #bold: True
-                            text_icon_dis: 94
-                            uppertextY: 4
-                            lowertextY: 20
-                            pos: self.parent.width - self.parent.width + 30, self.parent.height - 530
-                            back_color: 1, 0, 0.5, 1
-                            font_fam1: "fonts/ARIALMTLIGHT.TTF"
+                            pos: self.parent.width - self.parent.width + 30, self.parent.height - 210
+                            back_color: get_color_from_hex('FFFFFF')
+                            font_fam1: "fonts/arialmt.TTF"
                             uppertext_size: "18dp"
                             lowertext_size: "15dp"
+                            text_icon_dis: 77
+                        ChatItem:
+                            icon2: 'message-processing-outline'
+                            #avatar2: 'key.png'
+                            uppertext: "Chat"
+                            lowertext: "Chat history,theme,wallpapers"
+                            iconp_size: "70dp"
+                            #bold: True
+                            text_icon_dis: 94
+                            uppertextY: 4
+                            lowertextY: 20
+                            pos: self.parent.width - self.parent.width + 30, self.parent.height - 290
+                            back_color: get_color_from_hex('FFFFFF')
+                            font_fam1: "fonts/arialmt.TTF"
+                            uppertext_size: "18dp"
+                            lowertext_size: "15dp"
+                            text_icon_dis: 77
+                        ChatItem:
+                            icon2: 'bell-outline'
+                            #avatar2: 'key.png'
+                            uppertext: "Notifications"
+                            lowertext: "Messages, groups and others"
+                            iconp_size: "70dp"
+                            #bold: True
+                            text_icon_dis: 94
+                            uppertextY: 4
+                            lowertextY: 20
+                            pos: self.parent.width - self.parent.width + 30, self.parent.height - 380
+                            back_color:get_color_from_hex('FFFFFF')
+                            font_fam1: "fonts/arialmt.TTF"
+                            uppertext_size: "18dp"
+                            lowertext_size: "15dp"
+                            text_icon_dis: 77
+                        ChatItem:
+                            icon2: 'help-circle-outline'
+                            #avatar2: 'key.png'
+                            uppertext: "Help"
+                            lowertext: "Help center,contact us,privacy policy"
+                            iconp_size: "70dp"
+                            #bold: True
+                            text_icon_dis: 94
+                            uppertextY: 4
+                            lowertextY: 20
+                            pos: self.parent.width - self.parent.width + 30, self.parent.height - 470
+                            back_color:get_color_from_hex('FFFFFF')
+                            font_fam1: "fonts/arialmt.TTF"
+                            uppertext_size: "18dp"
+                            lowertext_size: "15dp"
+                            text_icon_dis: 77
+                        ChatItem:
+                            icon2: 'swap-vertical'
+                            #avatar2: 'key.png'
+                            uppertext: "Storage and data"
+                            lowertext: "Network usage, storage usage"
+                            iconp_size: "70dp"
+                            #bold: True
+                            text_icon_dis: 94
+                            uppertextY: 4
+                            lowertextY: 20
+                            pos: self.parent.width - self.parent.width + 30, self.parent.height - 560
+                            back_color: get_color_from_hex('FFFFFF')
+                            font_fam1: "fonts/arialmt.TTF"
+                            uppertext_size: "18dp"
+                            lowertext_size: "15dp"
+                            text_icon_dis: 77
+                        ChatItem:
+                            icon2: 'account-multiple-outline'
+                            #avatar2: 'key.png'
+                            uppertext: "Invite a friend"
+                            lowertext: ""
+                            iconp_size: "70dp"
+                            #bold: True
+                            text_icon_dis: 94
+                            uppertextY: -7.4
+                            lowertextY: 20
+                            pos: self.parent.width - self.parent.width + 30, self.parent.height - 640
+                            back_color: get_color_from_hex('FFFFFF')
+                            font_fam1: "fonts/arialmt.TTF"
+                            uppertext_size: "18dp"
+                            lowertext_size: "15dp"
+                            text_icon_dis: 77
 
                         
                             
@@ -1067,8 +1109,9 @@
     font_fam1: "fonts/arialmt.ttf"
     uppertext_size: "22dp"
     lowertext_size: "15dp"
-    icon: ""
-    icon_color: 1,1,1,1
+    icon_size: "30dp"
+    icon2: ""
+    icon_color: 121/255, 124/255, 123/255, 1
     Button:
         background_normal: ''
         background_down: ''
@@ -1076,22 +1119,13 @@
         id: button1
         text: ""
         MDIconButton:
-        #Button:
-            #ICON
-            background_normal: ''
-            background_down: ''
-            background_color: ''
-            #text: "I am a girl"
-            size_hint: None, None
-            icon_size: chat_item.iconp_size
-            icon: chat_item.icon
-            color: 1, 1, 1, 1
-            #icon_color: chat_item.icon_color
-            specific_text_color: 1, 1, 1, 1
+            icon: chat_item.icon2
+            icon_color: chat_item.icon_color
+            icon_size: chat_item.icon_size
             theme_icon_color: "Custom"
-            size: chat_item.iconp_size , chat_item.iconp_size
+            #pos_hint: {'right': 0.98, 'top': 0.99}
             pos: self.parent.pos[0] + 10, self.parent.pos[1] + 12
-            canvas:
+            canvas.before:
                 Color: 
                     rgb: 242/255, 248/255, 247/255, 1
                 RoundedRectangle:
