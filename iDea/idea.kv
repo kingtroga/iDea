@@ -1,5 +1,6 @@
 #: import WipeTransition kivy.uix.screenmanager.WipeTransition
 #: import get_color_from_hex kivy.utils.get_color_from_hex
+#: import Window kivy.core.window.Window
 <RootWidget>:
     id: sm
     transition: WipeTransition()
@@ -31,7 +32,7 @@
 
 <Screen1>:
     #on_touch_down: root.manager.current = "Screen2"
-    
+    #on_enter: root.manager.current = "Screen2"
     name: "Screen1"
     canvas.before:
         PushMatrix:
@@ -50,6 +51,7 @@
 
 <Screen2>:
     on_enter: app.start_ideaLabel2_animation()
+    #on_enter: root.manager.current = "Screen1"
     name: "Screen2"
     canvas.before:
         PushMatrix:
@@ -193,8 +195,14 @@
                 on_touch_down: app.handle_login(*args)
                 on_press:  self.color=(0.5, 0.5, 0.5, 1) #app.handle_press(self)
                 on_release: self.color=(1, 1, 1, 1)
+###################################################################################################################################################################################################################################################################################
+################################### LOGIN SCREEN ###################################################################################################################################################################################################################################################3
+###############################################################################################################################################################################333
 <Screen4>:
     name: "Screen4"
+    on_touch_down: 
+        app.check_for_textinput()
+        #app.check_for_notextinput()
     canvas.before:
         PushMatrix:
         Color:
@@ -275,6 +283,7 @@
                 pos_hint: {'left': 1}
                 color: (36/255, 120/255, 109/255, 1)
             TextInput:
+                id: login_text_input1
                 background_normal: ''
                 background_active: ''
                 background_color: (1, 1, 1, 1) 
@@ -285,6 +294,7 @@
                 size_hint_x: 1.8
                 multiline: False
                 padding:[0.4, 7,0.4, 0.4]
+                #on_focus: app.handle_login2_logic()
                 canvas.before:
                     PushMatrix:
                     Color:
@@ -310,6 +320,7 @@
                 pos_hint: {'left': 1}
                 color: (36/255, 120/255, 109/255, 1)
             TextInput:
+                id: login_text_input2
                 background_normal: ''
                 background_active: ''
                 background_color: (1, 1, 1, 1) 
@@ -320,6 +331,7 @@
                 size_hint_x: 1.8
                 multiline: False
                 padding:[0.4, 7,0.4, 0.4]
+                #on_focus: app.handle_login2_logic()
                 canvas.before:
                     PushMatrix:
                     Color:
@@ -343,8 +355,14 @@
                 font_size: "15dp"
                 color: (121/255, 124/255, 123/255, 1)
                 on_touch_down: app.handle_login2()
-                on_press: app.handle_loginBtn2_press() #self.back_color=(36/255, 120/255, 109/255, 1)
-                on_release: app.handle_loginBtn2_release() #self.back_color= (243/255, 246/255, 246/255, 1)
+                #on_touch_down: app.handle_login2_logic()
+                #on_touch_up: app.handle_login2()
+                on_press: 
+                    #self.parent.parent.parent.start_loading_screen()
+                    self.parent.parent.parent.handle_loginBtn2_press() #self.back_color=(36/255, 120/255, 109/255, 1)
+                    
+                on_release: 
+                    self.parent.parent.parent.handle_loginBtn2_release() #self.back_color= (243/255, 246/255, 246/255, 1)
         BoxLayout:
             orientation: "vertical"
             pos_hint: {'center_x': 0.5, 'center_y': 0.07}
@@ -359,6 +377,8 @@
                 on_release: self.color = (36/255, 120/255, 109/255, 1)
 <Screen5>:
     name: "Screen5"
+    on_touch_down: 
+        app.check_for_textinput()
     canvas.before:
         PushMatrix:
         Color:
@@ -583,7 +603,9 @@
 
 <Screen6>:
     name: "Screen6"
-    on_enter: app.start_story()
+ 
+        
+
 ###########################################################################################################################################################################################################################
 ################################## THE MESSAGE SCREEN ######################################################################################################################################################3##############
 ###########################################################################################################################################################################################################################
@@ -591,6 +613,7 @@
         id: bottom_navigation
         selected_color_background: get_color_from_hex('FFFFFF')
         text_color_active: get_color_from_hex('24786D')
+        
         MDBottomNavigationItem:
             name: 'screen1'
             text: 'Message'
@@ -619,14 +642,17 @@
                         icon_color: 1, 1, 1, 1
                         icon_size: '30dp'
                         theme_icon_color: "Custom"
-                        pos_hint: {'right': 0.16, 'top': 0.99}
+                        pos: top_bar_1.pos[0] + 10, top_bar_1.pos[1] + 3
                         
-                        canvas:
+                        canvas.after:
                             Color:
                                 rgb: 59/255, 63/255, 59/255, 1
                             Line:
                                 width: 1
                                 circle: (self.center_x, self.center_y, min(self.width-2, self.height-2)/2, 0, 360)
+                    
+
+                                 
 #################The Second part of the MDTopBar###########################################################################################################################################333
                     MDIconButton:
                         icon: '4.jpg'
@@ -656,13 +682,15 @@
                             rows: 1
                             spacing: 25
                             padding: 20, 15
-
+###################### the white part of the screen #############################################################################################################################################
                     MDBoxLayout:
                         md_bg_color: 1, 1, 1, 1
                         orientation: "vertical"
                         size_hint: 1, .7
                         pos_hint: {"center_x": .5, "y": 0}
                         radius: [40,40, 0, 0]
+                        id: whitey
+                        
                         Label:
                             id: design
                             canvas:
@@ -672,6 +700,7 @@
                                     size: self.width/12, 3
                                     pos: self.width/2 - (self.width/8)/2, self.parent.height - 15
                                     radius: [2]
+                        
                         RecycleView:
                             id: rv
                             viewclass: 'ChatItem'
@@ -682,6 +711,8 @@
                                 size_hint_y: None
                                 height: self.minimum_height
                                 orientation: 'vertical'
+
+                                
 ##############################################################################################################################################################################################################
 ############# THE GROUP SCREEN ###############################################################################################################################################################################
 ##############################################################################################################################################################################################################                                               
@@ -690,6 +721,7 @@
             text: 'Groups'
             icon: 'account-group-outline'
             badge_icon: "numeric-5"
+            #on_tab_release: app.show_groups()
 
 
             MDScreen:
@@ -715,7 +747,7 @@
                         icon_color: 1, 1, 1, 1
                         icon_size: '30dp'
                         theme_icon_color: "Custom"
-                        pos_hint: {'right': 0.16, 'top': 0.99}
+                        pos: top_bar_1.pos[0] + 10, top_bar_1.pos[1] + 3
                         
                         canvas:
                             Color:
@@ -764,38 +796,18 @@
                                     pos: self.width/2 - (self.width/8)/2, self.parent.height - 40
                                     radius: [2]
 
-
-                        MDFloatLayout:
-                            #orientation: "vertical"
-                            pos_hint: {"center_x": 0.5, "y": -100}
-                            y: 100
-                            size_hint: 0.75, None
-                            #md_bg_color: 1, 0, 0, 1
-                            height: 70
-                            MDLabel:
-                                color: 121/255, 124/255, 123/255, 1
-                                font_name:"fonts/Montserrat-Light.ttf"
-                                text: "Create more groups provided it meets the terms conditions of this app and the school(MTU)"
-                                font_size: "15dp"
-                                halign: "center"
-                                pos_hint: {"center_x": 0.5, "center_y": -3.95}
-
-                            
-                                
-
-
-
-
-                        RecycleView:
-                            id: rv2
-                            viewclass: 'ChatItem'
-                            size_hint_y: 7
-                            RecycleBoxLayout:
-                                default_size: None, 100
-                                default_size_hint: 1, None
+                        ScrollView:
+                            do_scroll_x: False
+                            do_scroll_y: True
+                            size_hint: 1, None
+                            size: self.parent.width, self.parent.height - 50
+                            #pos: self.parent.pos[0], self.parent.pos[0] - 120
+                            BoxLayout:
+                                id: groupie
+                                orientation: "vertical"
                                 size_hint_y: None
-                                height: self.minimum_height
-                                orientation: 'vertical'                 
+                                size_hint_x: 1
+                                height: 400                
 ################################################################################################################################################################################33
 ############################## THE ANNOUCEMENTS SCREEN ####################################################################################################################################3
 #########################################################################################################################################################################################################
@@ -803,6 +815,7 @@
             name: 'screen 3'
             text: 'Announce'
             icon: 'bullhorn-outline'
+            #on_tab_release: app.do_something()
             MDScreen:
                 radius: [0, 0, 0, 0]
                 md_bg_color: 0, 14/255, 8/255, 1
@@ -825,15 +838,14 @@
                         icon_color: 1, 1, 1, 1
                         icon_size: '30dp'
                         theme_icon_color: "Custom"
-                        pos_hint: {'right': 0.16, 'top': 0.99}
-                        
+                        pos: top_bar_1.pos[0] + 10, top_bar_1.pos[1] + 3
                         canvas:
                             Color:
                                 rgb: 59/255, 63/255, 59/255, 1
                             Line:
                                 width: 1
                                 circle: (self.center_x, self.center_y, min(self.width-2, self.height-2)/2, 0, 360)
-#################The Second part of the MDTopBar###########################################################################################################################################333
+#################The Second part of the MDTopBar###############################################################################################################################################################333
                     # to hide real MDTopAppBar right icon
                     MDBoxLayout:
                         size_hint: None, None
@@ -858,9 +870,8 @@
 ########################################################################################################################################################
 #### The White Part of the Screen code#################################################################################################################################
 #########################################################################################################################################################################
-                    MDBoxLayout:
+                    MDFloatLayout:
                         md_bg_color: 1, 1, 1, 1
-                        orientation: "vertical"
                         size_hint: 1, .88
                         pos_hint: {"center_x": .5, "y": 0}
                         radius: [40,40, 0, 0]
@@ -873,6 +884,30 @@
                                     size: self.width/12, 3
                                     pos: self.width/2 - (self.width/8)/2, self.parent.height - 15
                                     radius: [2]
+
+                        MDLabel:
+                            id: recent
+                            text: "Recent"
+                            font_name: "fonts/arialmt.TTF"
+                            pos_hint: {"center_y": .93 }
+                            x: 26
+                            font_size: "19dp"
+                            theme_text_color: "Custom"
+                            text_color: 0, 0, 0, 1
+
+                        ScrollView:
+                            do_scroll_x: False
+                            do_scroll_y: True
+                            size_hint: 1, None
+                            size: self.parent.width, self.parent.height
+                            pos: self.parent.pos[0], self.parent.pos[0] - 80
+                            BoxLayout:
+                                id: aBox
+                                orientation: "vertical"
+                                size_hint_y: None
+                                size_hint_x: 1
+                                height: 700
+                        
 ##################################################################################################################################################################################
 ###########################THE SETTINGS SCREEN ##############################################################################################################################################3
 ##########################################################################################################################################################################################################
@@ -1143,7 +1178,7 @@
             orientation: "vertical"
             pos: self.parent.pos[0] + chat_item.text_icon_dis, self.parent.pos[1] + chat_item.uppertextY#2
             size_hint: None, 1
-            width: 200
+            width: 400
             MDLabel:
                 id: uppertext
                 text: root.uppertext
@@ -1181,3 +1216,96 @@
                 color: 1, 0, 0, 1
                 icon: root.icon
                 halign: "left"
+
+
+<AnnouncementItem>:
+    ######################################################################################################################################
+    ############################################ANNOUNCEMENT MAIN CONTAINER###############################################################
+    ######################################################################################################################################
+    id: announcement
+    size_hint: 1, 0.34
+    md_bg_color: get_color_from_hex("#FFFFFF")
+    ##############################################################################################################################
+    #######################################THE INFO PART (With Author avatar, name, and date created)#############################
+    ##############################################################################################################################
+    MDFloatLayout:
+        pos_hint: {'center_x': 0.5, 'y': .7}
+        size_hint: 1, 0.3
+        md_bg_color: get_color_from_hex("#FFFFFF")
+        MDIconButton:
+            icon: announcement.avatar ## AUTHOR AVATAR
+            icon_color: get_color_from_hex("FFFFFF")
+            icon_size: "40dp"
+            theme_icon_color: "Custom"
+            pos: self.parent.pos[0] + 22.5, self.parent.pos[1] + 5
+            canvas:
+                Color: 
+                    rgb: 242/255, 248/255, 247/255, 1
+                RoundedRectangle:
+                    source: self.icon
+                    size: self.size
+                    pos: self.pos
+                    radius: [50]
+        MDLabel:
+            text: announcement.author_name ## AUTHOR NAME
+            font_name: "fonts/arialmt.TTF"
+            font_size: "19dp"
+            theme_text_color: "Custom"
+            text_color: 0, 0, 0, 1
+            pos: self.parent.pos[0] + 99, self.parent.pos[1] + 5
+        MDLabel:
+            text: announcement.date_created  ## DATE CREATED
+            font_name: "fonts/Montserrat-Light.ttf"
+            font_size: "15dp"
+            theme_text_color: "Custom"
+            text_color: 121/255, 124/255, 123/255, 1
+            pos: self.parent.pos[0] + 99, self.parent.pos[1] - 20
+    ##############################################################################################################################
+    #######################################THE GREEN PART (With the Announcement Topic and Content)###############################
+    ##############################################################################################################################
+    MDFloatLayout:
+        radius: [40, 40, 40, 40]
+        pos_hint: {'center_x': 0.47, 'center_y': .35}
+        size_hint: 0.8, 0.6
+        md_bg_color: 242/255, 248/255, 247/255, 1
+        canvas.before:
+            Color:
+                rgba: self.md_bg_color
+            RoundedRectangle:
+                size: self.size[0] + 20, self.size[1]
+                radius: self.radius
+                pos: self.pos
+        MDLabel:
+            text: announcement.topic ## ANNOUCEMENT TOPIC
+            font_name:"fonts/ARLRDBD.ttf"
+            font_size: "20dp"
+            width: self.parent.width
+            theme_text_color: "Custom"
+            text_color: 0, 0, 0, 1
+            pos: self.parent.pos[0] + 15, self.parent.pos[1] + 50
+        MDLabel:
+            color: 121/255, 124/255, 123/255, 1  ## ANNOUCEMENT CONTENT
+            font_name:"fonts/Montserrat-Light.ttf"
+            text: announcement.body
+            width: self.parent.width
+            font_size: "15dp"
+            halign: "left"
+            pos: self.parent.pos[0] + 15, self.parent.pos[1] - 20
+
+<LoadingItem>:
+    label_pos: 100, 100
+    label_color: [0, 0, 0, 1]
+    label_size: "70dp"
+    MDLabel:
+        text: "Loading..."
+        halign: "center"
+        valign: "center"
+        theme_text_color: "Custom"
+        text_color: self.parent.label_color
+        font_name: "fonts/Montserrat-Light.ttf"
+        font_size: self.parent.label_size
+        pos: self.parent.label_pos
+        
+        
+
+        
