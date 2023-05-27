@@ -1,4 +1,5 @@
 <img src="https://mtu.edu.ng/banner/mtu_home_banner_002.jpg"/>
+
 # iDea
  An Information DissEmination Application that runs on Mountain Top University's (MTU's) intranet thereby allowing for secure and controlled communication within the school community.
 ## Statement of Problem (MTU AS A CASE STUDY)
