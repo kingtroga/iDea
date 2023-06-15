@@ -9,10 +9,7 @@
 <ul>
  <li>A lecturer has to call the hostel porters if the attention of a student is needed in the college area    student regardless of if he or she is in the hostel. 
 </li>
- <li>A lecturer has to call the hostel porters if the attention of a student is needed in the college area    student regardless of if he or she is in the hostel. 
-</li>
- <li>A lecturer has to call the hostel porters if the attention of a student is needed in the college area    student regardless of if he or she is in the hostel. 
-</li>
+
 </ul>
 
 ## Aim and Objectives
