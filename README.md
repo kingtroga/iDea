@@ -1,4 +1,4 @@
-<img src="assets\images\mtu.jpg"/>
+<img src="https://pbs.twimg.com/media/F9STow9WkAAnP5v?format=jpg&name=large"/>
 
 # iDea - Information Dissemination Application
 
