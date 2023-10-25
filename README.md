@@ -1,4 +1,4 @@
-<img src="https://mtu.edu.ng/banner/mtu_home_banner_002.jpg"/>
+<img src="assets\images\mtu.jpg"/>
 
 # iDea - Information Dissemination Application
 
