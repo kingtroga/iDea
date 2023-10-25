@@ -25,8 +25,8 @@ The primary aim of iDea is to address these issues by:
 ## Usage Instructions
 
 To use iDea, follow these steps:
-1. [Download](#) and install the application on your device.
-2. [Configuration Guide](#): Follow our instructions to set up your iDea application within MTU's intranet.
+1. [Download](https://github.com/kingtroga/iDea/tree/main/Download) and install the application on your device.
+2. [Configuration Guide](https://www.instagram.com/atari.can/): Follow our instructions to set up your iDea application within MTU's intranet.
 3. Start using the app to enhance your communication and collaboration within the university community.
 
 ## Technologies Used
