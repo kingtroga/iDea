@@ -1,4 +1,4 @@
-<img src="assets\images\mtu.jpg"/>
+<img src="https://github.com/kingtroga/iDea/blob/main/assets/images/mtu.jpg"/>
 
 # iDea - Information Dissemination Application
 
