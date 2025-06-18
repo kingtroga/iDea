@@ -6,7 +6,7 @@ Welcome to iDea, the Information Dissemination Application tailored for Windows 
 
 To get started, simply download the iDea application for Windows by clicking on the link below:
 
-[Download iDea for Windows](https://drive.google.com/file/d/1zOUgUIMj5kYUSL_0NsQKV7EEjE-Fno2H/view?usp=drive_link)
+[Download iDea for Windows](https://mega.nz/file/7V81EYSC#iUUmZ5hJBnDeAaim8oWHmUb2SUYGXo7RSbtxkyTVQWY)
 
 ## Features
 
